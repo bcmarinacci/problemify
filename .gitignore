@@ -1,0 +1,11 @@
+# build
+dist/
+
+# node
+node_modules/
+
+# os x
+.DS_Store
+
+# vs code
+typings/
