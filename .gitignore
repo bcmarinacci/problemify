@@ -1,5 +1,7 @@
-# build
+# package
 dist/
+test/fixtures/mockUtils-problem/
+test/fixtures/mockUtils-solution/
 
 # node
 node_modules/
