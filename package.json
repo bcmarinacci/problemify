@@ -14,7 +14,7 @@
     "postversion": "git push --tags"
   },
   "bin": {
-    "problemify": "./src/bin/cli.js"
+    "problemify": "./dist/bin/cli.js"
   },
   "repository": {
     "type": "git",
