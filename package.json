@@ -1,7 +1,7 @@
 {
   "name": "problemify",
   "version": "0.2.0",
-  "description": "",
+  "description": "Create problem and solution versions of a directory.",
   "engines": {
     "node": ">=4.2.4"
   },
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcmairnacci/problemify.git"
+    "url": "https://github.com/bcmarinacci/problemify.git"
   },
   "keywords": [
     "hack reactor",
@@ -34,7 +34,7 @@
   "author": "Benjamin Marinacci",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bcmairnacci/problemify/issues"
+    "url": "https://github.com/bcmarinacci/problemify/issues"
   },
   "devDependencies": {
     "ava": "^0.14.0",

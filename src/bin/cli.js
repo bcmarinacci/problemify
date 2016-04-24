@@ -14,6 +14,8 @@ const cli = meow(`
 
   Example
     $ problemify death-star-plans
+    $ ls
+    death-star-plans  death-star-plans-problem  death-star-plans-solution
 `, {
   string: ['_']
 });
