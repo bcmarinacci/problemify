@@ -127,6 +127,6 @@ test('output', async t => {
       t.is(file, result);
     });
   } catch (err) {
-    console.error(err);
+    t.fail(err.message);
   }
 });
