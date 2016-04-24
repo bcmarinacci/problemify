@@ -5,6 +5,8 @@
   "exclude": [
     "dist",
     "node_modules",
-    "typings"
+    "typings",
+    "test/fixtures/mockUtils-problem",
+    "test/fixtures/mockUtils-solution"
   ]
 }
