@@ -25,6 +25,10 @@ const problemify = async function (srcDir, destDir, cb) {
   let counter = 0;
   const ncpOptions = {
     stopOnErr: true,
+    // filter pathnames that contain '.git'
+    filter(input) {
+      return !(/\.git/g.test(input));
+    },
     transform(fileReadable, fileWriteable) {
       counter++;
 
