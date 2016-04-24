@@ -34,7 +34,12 @@ const problemify = async function (srcDir, destDir, cb) {
     }
   };
 
-  await pify(ncp)(srcDir, destDir, ncpOptions);
+  try {
+    await pify(ncp)(srcDir, destDir, ncpOptions);
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 };
 
 const sourceDirectory = formatPath(cli.input[0]);
