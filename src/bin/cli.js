@@ -3,6 +3,7 @@
 import meow from 'meow';
 import {ncp} from 'ncp';
 import pify from 'pify';
+import formatPath from '../lib/formatPath';
 import prepareProblem from '../lib/prepareProblem';
 import prepareSolution from '../lib/prepareSolution';
 
@@ -17,7 +18,6 @@ const cli = meow(`
 });
 
 const problemify = async function (srcDir, destDir, cb) {
-  // TODO: format `srcDir`
   // TODO: log relative paths of files written
   const ncpOptions = {
     stopOnErr: true,
@@ -37,8 +37,7 @@ const problemify = async function (srcDir, destDir, cb) {
   await pify(ncp)(srcDir, destDir, ncpOptions);
 };
 
-const sourceDirectory = cli.input[0];
-console.log('input: ', sourceDirectory);
+const sourceDirectory = formatPath(cli.input[0]);
 
 const problemDestination = `${sourceDirectory}-problem`;
 const solutionDestination = `${sourceDirectory}-solution`;
