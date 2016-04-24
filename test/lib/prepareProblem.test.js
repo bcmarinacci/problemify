@@ -23,7 +23,7 @@ test('remove problem comments', t => {
   t.is(prepareProblem('/* START PROBLEM\nconst jedi = "rey"\nEND PROBLEM */\n'), 'const jedi = "rey"\n');
 });
 
-test('leave normal code unaffected', t => {
+test('leave code that is outside of problem and solution comments unaffected', t => {
   const mock = '// normal code';
 
   t.is(prepareProblem(mock), mock);
