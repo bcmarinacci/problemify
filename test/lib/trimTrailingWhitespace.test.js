@@ -1,10 +1,6 @@
 import test from 'ava';
 import trim from '../../dist/lib/trimTrailingWhitespace';
 
-test('should be a function', t => {
-  t.true(trim instanceof Function);
-});
-
 test('should remove trailing space characters', t => {
   const test = 'a \nb  \n  ';
   const result = 'a\nb\n';

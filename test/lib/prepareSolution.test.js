@@ -3,10 +3,6 @@
 import test from 'ava';
 import prepareSolution from '../../dist/lib/prepareSolution';
 
-test('should be a function', t => {
-  t.true(prepareSolution instanceof Function);
-});
-
 test('should remove problem code', t => {
   t.is(prepareSolution('/* start problem\nconst jedi = "rey"\nend problem */\nconst droid = "r2-d2"'), 'const droid = "r2-d2"');
   t.is(prepareSolution('/* first start problem\nconst jedi = "rey"\nthen end problem */\nconst droid = "r2-d2"'), 'const droid = "r2-d2"');
@@ -27,8 +23,16 @@ test('should remove all solution comments', t => {
   t.is(prepareSolution('// START SOLUTION\nconst x = 2187;\n// END SOLUTION\nconst pilot = "han"\n'), 'const x = 2187;\nconst pilot = "han"\n');
 });
 
-test('should retain indentation', t => {
-  t.is(prepareSolution('   const copilot = "chewbacca";\n    console.log(copilot);\n'), '   const copilot = "chewbacca";\n    console.log(copilot);\n');
+test('leave normal code unaffected', t => {
+  const mock = '// normal code';
+
+  t.is(prepareSolution(mock), mock);
+});
+
+test('retain indentation', t => {
+  const mock = '   const copilot = "chewbacca";\n    console.log(copilot);\n';
+
+  t.is(prepareSolution(mock), mock);
 });
 
 test('should remove problem code and leave non-problem code', t => {
