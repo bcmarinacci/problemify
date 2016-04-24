@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import chalk from 'chalk';
 import meow from 'meow';
 import {ncp} from 'ncp';
 import pify from 'pify';
@@ -18,7 +19,9 @@ const cli = meow(`
 });
 
 const problemify = async function (srcDir, destDir, cb) {
-  // TODO: log relative paths of files written
+  // match root directory name without slashes
+  const regex = /.*?\/*([^<>:"\/\\|?*]+)\/*$/;
+  const rootDirname = srcDir.replace(regex, '$1');
   const ncpOptions = {
     stopOnErr: true,
     transform(srcFileStream, destFileStream) {
@@ -29,7 +32,12 @@ const problemify = async function (srcDir, destDir, cb) {
 
       srcFileStream.on('end', async () => {
         await pify(destFileStream.write(cb(file)));
-        console.log('file written');
+        const srcName = srcFileStream.path;
+        const srcIndex = srcName.lastIndexOf(rootDirname);
+        const destName = destFileStream.path;
+        const destIndex = destName.lastIndexOf(rootDirname);
+        const output = chalk.blue(`${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
+        console.log(output);
       });
     }
   };
@@ -43,7 +51,6 @@ const problemify = async function (srcDir, destDir, cb) {
 };
 
 const sourceDirectory = formatPath(cli.input[0]);
-
 const problemDestination = `${sourceDirectory}-problem`;
 const solutionDestination = `${sourceDirectory}-solution`;
 
