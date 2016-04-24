@@ -9,8 +9,8 @@
     "build": "babel src/ --out-dir dist/",
     "clean": "rm -rf dist/ test/fixtures/mockUtils-{problem,solution}",
     "lint": "xo --fix",
-    "prepublish": "npm run build",
-    "test": "npm run build && ava && npm run clean && npm run lint",
+    "prepublish": "npm run test",
+    "test": "npm run build && ava && npm run lint",
     "preversion": "npm run test",
     "postversion": "git push --tags"
   },
