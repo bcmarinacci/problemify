@@ -106,6 +106,8 @@ print(jedi);
 `;
 
 test('output', async t => {
+  t.plan(6);
+
   try {
     await pify(execFile)('../../dist/bin/cli.js', ['../fixtures/mockUtils']);
     const pathKeys = Object.keys(fixturePaths);
