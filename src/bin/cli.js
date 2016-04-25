@@ -33,15 +33,16 @@ const problemify = async function (srcDir, destDir, cb) {
       counter++;
 
       fileReadable.on('data', chunk => fileWriteable.write(cb(chunk.toString())));
-      fileReadable.on('end', () => fileWriteable.end());
       fileReadable.on('error', err => console.error(err));
       fileWriteable.on('error', err => console.error(err));
-
-      const srcName = fileReadable.path;
-      const srcIndex = srcName.lastIndexOf(rootDirname);
-      const destName = fileWriteable.path;
-      const destIndex = destName.lastIndexOf(rootDirname);
-      console.log(`${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
+      fileReadable.on('end', () => {
+        const srcName = fileReadable.path;
+        const srcIndex = srcName.lastIndexOf(rootDirname);
+        const destName = fileWriteable.path;
+        const destIndex = destName.lastIndexOf(rootDirname);
+        console.log(`${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
+        fileWriteable.end();
+      });
     }
   };
 
@@ -50,15 +51,15 @@ const problemify = async function (srcDir, destDir, cb) {
   return counter;
 };
 
-const sourceDirectory = formatPath(cli.input[0]);
-const problemDestination = `${sourceDirectory}-problem`;
-const solutionDestination = `${sourceDirectory}-solution`;
+const cliInput = formatPath(cli.input[0]);
+const problemDest = `${cliInput}-problem`;
+const solutionDest = `${cliInput}-solution`;
 
 (async () => {
   try {
-    let filesCopied = await problemify(sourceDirectory, problemDestination, prepareProblem);
-    filesCopied += await problemify(sourceDirectory, solutionDestination, prepareSolution);
-    console.log(chalk.blue(`${filesCopied} files were successfully transferred.`));
+    let filesCopied = await problemify(cliInput, problemDest, prepareProblem);
+    filesCopied += await problemify(cliInput, solutionDest, prepareSolution);
+    console.log(chalk.blue(`\n${filesCopied} files were successfully created.`));
   } catch (err) {
     console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."));
     console.error(chalk.red(err.stack));
