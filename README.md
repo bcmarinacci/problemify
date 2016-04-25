@@ -2,6 +2,16 @@
 
 > Create problem and solution versions of a directory.
 
+Automatically exlcluded project components:
+- .DS_Store
+- .git
+- bower_components
+- dist
+- jspm_packages
+- node_modules
+- tem
+- temp
+
 ## Install
 
 ```bash
