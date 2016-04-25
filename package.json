@@ -12,7 +12,7 @@
     "prepublish": "npm run test",
     "test": "npm run build && ava && npm run lint",
     "preversion": "npm run test",
-    "postversion": "git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "bin": {
     "problemify": "./dist/bin/cli.js"

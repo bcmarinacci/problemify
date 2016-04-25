@@ -8,6 +8,8 @@ import formatPath from '../lib/formatPath';
 import prepareProblem from '../lib/prepareProblem';
 import prepareSolution from '../lib/prepareSolution';
 
+let fileCount = 0;
+
 const problemify = async function (srcDir, destDir, cb) {
   // match root directory name without slashes
   const regex = /.*?\/*([^<>:"\/\\|?*]+)\/*$/;
@@ -25,12 +27,13 @@ const problemify = async function (srcDir, destDir, cb) {
       });
 
       fileReadable.on('end', () => {
+        fileCount++;
         fileWriteable.write(cb(file));
         const srcName = fileReadable.path;
         const srcIndex = srcName.lastIndexOf(rootDirname);
         const destName = fileWriteable.path;
         const destIndex = destName.lastIndexOf(rootDirname);
-        console.log(`${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
+        console.log(`${fileCount}. ${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
         fileWriteable.end();
       });
 
