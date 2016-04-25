@@ -19,10 +19,13 @@ const problemify = async function (srcDir, destDir, cb) {
       return !(/\.git/g.test(input));
     },
     transform(fileReadable, fileWriteable) {
-      fileReadable.on('data', chunk => fileWriteable.write(cb(chunk.toString())));
-      fileReadable.on('error', err => console.error(err));
-      fileWriteable.on('error', err => console.error(err));
+      let file = '';
+      fileReadable.on('data', chunk => {
+        file += chunk;
+      });
+
       fileReadable.on('end', () => {
+        fileWriteable.write(cb(file));
         const srcName = fileReadable.path;
         const srcIndex = srcName.lastIndexOf(rootDirname);
         const destName = fileWriteable.path;
@@ -30,6 +33,9 @@ const problemify = async function (srcDir, destDir, cb) {
         console.log(`${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
         fileWriteable.end();
       });
+
+      fileReadable.on('error', err => console.error(err));
+      fileWriteable.on('error', err => console.error(err));
     }
   };
 
