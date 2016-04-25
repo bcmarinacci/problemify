@@ -14,7 +14,7 @@ npm install -g problemify
 $ problemify --help
 
   Usage
-      $ problemify <directory>
+    $ problemify <directory>
 
   Example
     $ problemify death-star-plans
