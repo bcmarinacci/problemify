@@ -8,16 +8,6 @@ import formatPath from '../lib/formatPath';
 import prepareProblem from '../lib/prepareProblem';
 import prepareSolution from '../lib/prepareSolution';
 
-const cli = meow(`
-  Usage
-    $ problemify <directory>
-
-  Example
-    $ problemify death-star-plans
-    $ ls
-    death-star-plans  death-star-plans-problem  death-star-plans-solution
-`);
-
 const problemify = async function (srcDir, destDir, cb) {
   // match root directory name without slashes
   const regex = /.*?\/*([^<>:"\/\\|?*]+)\/*$/;
@@ -46,6 +36,16 @@ const problemify = async function (srcDir, destDir, cb) {
   await pify(ncp)(srcDir, destDir, ncpOptions);
 };
 
+const cli = meow(`
+  Usage
+    $ problemify <directory>
+
+  Example
+    $ problemify death-star-plans
+    $ ls
+    death-star-plans  death-star-plans-problem  death-star-plans-solution
+`);
+
 const cliInput = formatPath(cli.input[0]);
 const problemDest = `${cliInput}-problem`;
 const solutionDest = `${cliInput}-solution`;
@@ -56,7 +56,7 @@ const solutionDest = `${cliInput}-solution`;
     await problemify(cliInput, solutionDest, prepareSolution);
   } catch (err) {
     console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."));
-    console.error(chalk.red(err.stack));
+    console.error(chalk.red(err.stack || err));
     process.exit(1);
   }
 })();
