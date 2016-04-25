@@ -27,14 +27,14 @@ $ problemify --help
     $ problemify <repository>
 
   Example
-    $ problemify death-star-plans
+    $ problemify map-to-luke
     $ ls
-    death-star-plans  death-star-plans-problem  death-star-plans-solution
+    map-to-luke    map-to-luke-problem    map-to-luke-solution
 ```
 
 ### Problem comment syntax
 
-Wrap problem code with `/* start problem` and `end problem*/` comments.
+Wrap problem code with `/* start problem` and `end problem */` comments.
 
 ```javascript
 /* start problem
@@ -45,7 +45,7 @@ function print(value) {
 end problem */
 ```
 
-### Problem comment syntax
+### Solution comment syntax
 
 Wrap solution code with `// start solution` and `// end solution` comments.
 
@@ -59,7 +59,7 @@ function print(value) {
 
 ## Example
 
-### death-star-plans
+### map-to-luke
 
 ```javascript
 // start solution
@@ -79,7 +79,7 @@ print(pilot);
 // → Poe
 ```
 
-### death-star-plans-problem
+### map-to-luke-problem
 
 ```javascript
 function print(value) {
@@ -92,7 +92,7 @@ print(pilot);
 // → Poe
 ```
 
-### death-star-plans-solution
+### map-to-luke-solution
 
 ```javascript
 function print(value) {
