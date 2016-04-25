@@ -9,11 +9,11 @@ import formatPath from '../lib/formatPath';
 import prepareProblem from '../lib/prepareProblem';
 import prepareSolution from '../lib/prepareSolution';
 
-let fileCount = 0;
 const problemify = async function (srcDir, destDir, cb) {
   // match root directory name without slashes
   const regex = /.*?\/*([^<>:"\/\\|?*]+)\/*$/;
   const rootDirname = srcDir.replace(regex, '$1');
+  let fileCount = 0;
   const ncpOptions = {
     stopOnErr: true,
     filter: rejectGitignore,
@@ -51,11 +51,11 @@ const cli = meow(`
     map-to-luke  map-to-luke-problem  map-to-luke-solution
 `);
 
-const cliInput = formatPath(cli.input[0]);
-const problemDest = `${cliInput}-problem`;
-const solutionDest = `${cliInput}-solution`;
 (async () => {
   try {
+    const cliInput = formatPath(cli.input[0]);
+    const problemDest = `${cliInput}-problem`;
+    const solutionDest = `${cliInput}-solution`;
     await problemify(cliInput, problemDest, prepareProblem);
     await problemify(cliInput, solutionDest, prepareSolution);
   } catch (err) {
