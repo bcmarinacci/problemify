@@ -3,7 +3,7 @@
 import test from 'ava';
 import prepareProblem from '../../dist/lib/prepareProblem';
 
-test('remove all solution code', t => {
+test('should remove solution code', t => {
   t.is(prepareProblem('// start solution\nconst x = 2187;\n// end solution\nconst pilot = "han"\n'), 'const pilot = "han"\n');
   t.is(prepareProblem('// first start solution\nconst x = 2187;\n// then end solution\nconst pilot = "han"\n'), 'const pilot = "han"\n');
   t.is(prepareProblem('// start solution code\nconst x = 2187;\n// end solution code\nconst pilot = "han"\n'), 'const pilot = "han"\n');
@@ -13,7 +13,7 @@ test('remove all solution code', t => {
   t.is(prepareProblem('// START SOLUTION\nconst x = 2187;\n// END SOLUTION\nconst pilot = "han"\n'), 'const pilot = "han"\n');
 });
 
-test('remove problem comments', t => {
+test('should remove problem comments', t => {
   t.is(prepareProblem('/* start problem\nconst jedi = "rey"\nend problem */\n'), 'const jedi = "rey"\n');
   t.is(prepareProblem('/* first start problem\nconst jedi = "rey"\nthen end problem */\n'), 'const jedi = "rey"\n');
   t.is(prepareProblem('/* start problem code\nconst jedi = "rey"\nend problem code */\n'), 'const jedi = "rey"\n');
@@ -23,19 +23,19 @@ test('remove problem comments', t => {
   t.is(prepareProblem('/* START PROBLEM\nconst jedi = "rey"\nEND PROBLEM */\n'), 'const jedi = "rey"\n');
 });
 
-test('leave code that is outside of problem and solution comments unaffected', t => {
+test('should leave normal code unaffected', t => {
   const mock = '// normal code';
 
   t.is(prepareProblem(mock), mock);
 });
 
-test('retain indentation', t => {
+test('should retain indentation', t => {
   const mock = '   const copilot = "chewbacca";\n    console.log(copilot);\n';
 
   t.is(prepareProblem(mock), mock);
 });
 
-test('remove solution code and leave non-solution code', t => {
+test('should remove solution code and leave non-solution code', t => {
   const mock = `
     // start solution
     function print(val) {
@@ -63,7 +63,7 @@ test('remove solution code and leave non-solution code', t => {
   t.is(prepareProblem(mock), result);
 });
 
-test('remove problem comments and leave problem code and non-solution code', t => {
+test('should remove problem comments and leave problem code', t => {
   const mock = `
     /* start problem
     function print(val) {

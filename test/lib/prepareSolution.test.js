@@ -23,13 +23,13 @@ test('should remove all solution comments', t => {
   t.is(prepareSolution('// START SOLUTION\nconst x = 2187;\n// END SOLUTION\nconst pilot = "han"\n'), 'const x = 2187;\nconst pilot = "han"\n');
 });
 
-test('leave normal code unaffected', t => {
+test('should leave normal code unaffected', t => {
   const mock = '// normal code';
 
   t.is(prepareSolution(mock), mock);
 });
 
-test('retain indentation', t => {
+test('should retain indentation', t => {
   const mock = '   const copilot = "chewbacca";\n    console.log(copilot);\n';
 
   t.is(prepareSolution(mock), mock);
@@ -63,7 +63,7 @@ test('should remove problem code and leave non-problem code', t => {
   t.is(prepareSolution(mock), result);
 });
 
-test('should remove solution comments and leave solution code and non-problem code', t => {
+test('should remove solution comments and leave solution code', t => {
   const mock = `
     // start solution
     function print(val) {

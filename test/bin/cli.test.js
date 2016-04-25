@@ -105,7 +105,7 @@ print(jedi);
 // Qui-Gon
 `;
 
-test('output', async t => {
+test('should write the correct files', async t => {
   t.plan(6);
 
   try {
