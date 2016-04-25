@@ -46,9 +46,9 @@ const cli = meow(`
     $ problemify <directory>
 
   Example
-    $ problemify death-star-plans
+    $ problemify map-to-luke
     $ ls
-    death-star-plans  death-star-plans-problem  death-star-plans-solution
+    map-to-luke  map-to-luke-problem  map-to-luke-solution
 `);
 
 const cliInput = formatPath(cli.input[0]);
