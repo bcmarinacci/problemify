@@ -1,6 +1,6 @@
 # problemify [![Build Status](https://travis-ci.org/bcmarinacci/problemify.svg?branch=master)](https://travis-ci.org/bcmarinacci/problemify)
 
-> Create problem and solution versions of a directory.
+> Create a problem and a solution version of a repository.
 
 Automatically exlcluded project components:
 - .DS_Store
@@ -24,7 +24,7 @@ npm install -g problemify
 $ problemify --help
 
   Usage
-    $ problemify <directory>
+    $ problemify <repository>
 
   Example
     $ problemify death-star-plans
@@ -32,9 +32,35 @@ $ problemify --help
     death-star-plans  death-star-plans-problem  death-star-plans-solution
 ```
 
-## Problem code
+### Problem comment syntax
 
-Input:
+Wrap problem code with `/* start problem` and `end problem*/` comments.
+
+```javascript
+/* start problem
+function print(value) {
+  // your code here
+
+}
+end problem */
+```
+
+### Problem comment syntax
+
+Wrap solution code with `// start solution` and `// end solution` comments.
+
+```javascript
+// start solution
+function print(value) {
+  console.log(value);
+}
+// end solution
+```
+
+## Example
+
+### death-star-plans
+
 ```javascript
 // start solution
 function print(value) {
@@ -53,7 +79,8 @@ print(pilot);
 // → Poe
 ```
 
-Output:
+### death-star-plans-problem
+
 ```javascript
 function print(value) {
   // your code here
@@ -65,28 +92,8 @@ print(pilot);
 // → Poe
 ```
 
-## Solution code
+### death-star-plans-solution
 
-Input:
-```javascript
-// start solution
-function print(value) {
-  console.log(value);
-}
-// end solution
-/* start problem
-function print(value) {
-  // your code here
-
-}
-end problem */
-
-const pilot = 'Poe';
-print(pilot);
-// → Poe
-```
-
-Output:
 ```javascript
 function print(value) {
   console.log(value);
