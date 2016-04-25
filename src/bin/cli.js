@@ -54,7 +54,6 @@ const cli = meow(`
 const cliInput = formatPath(cli.input[0]);
 const problemDest = `${cliInput}-problem`;
 const solutionDest = `${cliInput}-solution`;
-
 (async () => {
   try {
     await problemify(cliInput, problemDest, prepareProblem);
