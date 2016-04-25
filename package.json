@@ -1,6 +1,6 @@
 {
   "name": "problemify",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "Create a problem and a solution version of a repository.",
   "engines": {
     "node": ">=4.2.4"
