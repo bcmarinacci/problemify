@@ -1,4 +1,4 @@
-# problemify [![Build Status](https://travis-ci.org/bcmarinacci/problemify.svg?branch=master)](https://travis-ci.org/bcmarinacci/problemify)
+# problemify [![Build Status](https://travis-ci.org/bcmarinacci/problemify.svg?branch=master)](https://travis-ci.org/bcmarinacci/problemify) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 > Create a problem and a solution version of a repository.
 
@@ -52,7 +52,7 @@ Wrap solution code with `// start solution` and `// end solution` comments.
 ```javascript
 // start solution
 function print(value) {
-  console.log(value);
+  console.log(value)
 }
 // end solution
 ```
@@ -64,7 +64,7 @@ function print(value) {
 ```javascript
 // start solution
 function print(value) {
-  console.log(value);
+  console.log(value)
 }
 // end solution
 /* start problem
@@ -74,8 +74,8 @@ function print(value) {
 }
 end problem */
 
-const pilot = 'Han Solo';
-print(pilot);
+const pilot = 'Han Solo'
+print(pilot)
 // → Han Solo
 ```
 
@@ -87,8 +87,8 @@ function print(value) {
 
 }
 
-const pilot = 'Han Solo';
-print(pilot);
+const pilot = 'Han Solo'
+print(pilot)
 // → Han Solo
 ```
 
@@ -96,10 +96,10 @@ print(pilot);
 
 ```javascript
 function print(value) {
-  console.log(value);
+  console.log(value)
 }
 
-const pilot = 'Han Solo';
-print(pilot);
+const pilot = 'Han Solo'
+print(pilot)
 // → Han Solo
 ```
