@@ -60,7 +60,7 @@ const cli = meow(`
   try {
     const cliInput = cli.input[0]
     if (!cliInput) {
-      throw new Error('Invalid input')
+      throw new Error('Invalid arguments')
     }
 
     const formattedCliInput = formatPath(cliInput)
