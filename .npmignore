@@ -1,5 +1,5 @@
 # app
-dist/
+src/
 spec/fixtures/mockUtils-problem/
 spec/fixtures/mockUtils-solution/
 

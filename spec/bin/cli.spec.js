@@ -1,7 +1,8 @@
+/* eslint prefer-arrow-callback: "off" */
+
 import {readFile} from 'fs';
 import {execFile} from 'child_process';
 import pify from 'pify';
-import test from 'ava';
 
 const fixturePaths = {
   problemForEach: '../fixtures/mockUtils-problem/higherOrder/forEach/forEach.js',
@@ -105,28 +106,31 @@ print(jedi);
 // Qui-Gon
 `;
 
-test('should write the correct files', async t => {
-  t.plan(6);
+describe('CLI', function () {
+  it('should write the correct content to the correct files', function (done) {
+    (async () => {
+      try {
+        await pify(execFile)(`${__dirname}/../../dist/bin/cli.js`, [`${__dirname}/../fixtures/mockUtils`]);
+        const pathKeys = Object.keys(fixturePaths);
 
-  try {
-    await pify(execFile)('../../dist/bin/cli.js', ['../fixtures/mockUtils']);
-    const pathKeys = Object.keys(fixturePaths);
+        // Store output file contents in an array
+        const files = await Promise.all(pathKeys.map(pathKey => {
+          const path = fixturePaths[pathKey];
 
-    // Store output file contents in an array
-    const files = await Promise.all(pathKeys.map(pathKey => {
-      const path = fixturePaths[pathKey];
+          return pify(readFile)(`${__dirname}/${path}`, 'utf8');
+        }));
 
-      return pify(readFile)(path, 'utf8');
-    }));
+        // Assert whether the contents of each output file is correct
+        files.forEach((file, i) => {
+          const pathKey = pathKeys[i];
+          const result = results[pathKey];
 
-    // Assert whether the contents of each output file is equal to each desired result
-    files.forEach((file, i) => {
-      const pathKey = pathKeys[i];
-      const result = results[pathKey];
-
-      t.is(file, result);
-    });
-  } catch (err) {
-    t.fail(err.message);
-  }
+          expect(file).toEqual(result);
+          done();
+        });
+      } catch (err) {
+        done.fail(err);
+      }
+    })();
+  });
 });
