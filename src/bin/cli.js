@@ -48,12 +48,12 @@ const problemify = async function (srcDir, destDir, cb) {
 
 const cli = meow(`
   Usage
-    $ problemify <directory>
+    $ problemify <repository>
 
   Example
-    $ problemify map-to-luke
+    $ problemify kessel-run
     $ ls
-    map-to-luke  map-to-luke-problem  map-to-luke-solution
+    kessel-run    kessel-run-problem    kessel-run-solution
 `);
 
 (async () => {

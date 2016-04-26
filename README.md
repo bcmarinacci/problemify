@@ -27,9 +27,9 @@ $ problemify --help
     $ problemify <repository>
 
   Example
-    $ problemify map-to-luke
+    $ problemify kessel-run
     $ ls
-    map-to-luke    map-to-luke-problem    map-to-luke-solution
+    kessel-run    kessel-run-problem    kessel-run-solution
 ```
 
 ### Problem comment syntax
@@ -59,7 +59,7 @@ function print(value) {
 
 ## Example
 
-### map-to-luke
+### kessel-run
 
 ```javascript
 // start solution
@@ -74,12 +74,12 @@ function print(value) {
 }
 end problem */
 
-const pilot = 'Poe';
+const pilot = 'Han Solo';
 print(pilot);
-// → Poe
+// → Han Solo
 ```
 
-### map-to-luke-problem
+### kessel-run-problem
 
 ```javascript
 function print(value) {
@@ -87,19 +87,19 @@ function print(value) {
 
 }
 
-const pilot = 'Poe';
+const pilot = 'Han Solo';
 print(pilot);
-// → Poe
+// → Han Solo
 ```
 
-### map-to-luke-solution
+### kessel-run-solution
 
 ```javascript
 function print(value) {
   console.log(value);
 }
 
-const pilot = 'Poe';
+const pilot = 'Han Solo';
 print(pilot);
-// → Poe
+// → Han Solo
 ```
