@@ -38,7 +38,7 @@ Wrap problem code with `/* start problem` and `end problem */` comments.
 
 ```javascript
 /* start problem
-function print(value) {
+function print (value) {
   // your code here
 
 }
@@ -51,7 +51,7 @@ Wrap solution code with `// start solution` and `// end solution` comments.
 
 ```javascript
 // start solution
-function print(value) {
+function print (value) {
   console.log(value)
 }
 // end solution
@@ -63,12 +63,12 @@ function print(value) {
 
 ```javascript
 // start solution
-function print(value) {
+function print (value) {
   console.log(value)
 }
 // end solution
 /* start problem
-function print(value) {
+function print (value) {
   // your code here
 
 }
@@ -82,7 +82,7 @@ print(pilot)
 ### kessel-run-problem
 
 ```javascript
-function print(value) {
+function print (value) {
   // your code here
 
 }
@@ -95,7 +95,7 @@ print(pilot)
 ### kessel-run-solution
 
 ```javascript
-function print(value) {
+function print (value) {
   console.log(value)
 }
 
