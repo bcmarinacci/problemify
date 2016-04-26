@@ -2,19 +2,19 @@
 // start solution
 // solution code
 const print = function (value) {
-  console.log(value);
-};
+  console.log(value)
+}
 // end solution
 /* start problem
 // problem code
 const print = function () {
   // your code here
 
-};
+}
 end problem */
 
 // shared code
-const jedi = 'Qui-Gon';
+const jedi = 'Qui-Gon'
 
-print(jedi);
+print(jedi)
 // Qui-Gon

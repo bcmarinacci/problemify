@@ -1,0 +1,13 @@
+# app
+dist/
+spec/fixtures/mockUtils-problem/
+spec/fixtures/mockUtils-solution/
+
+# node
+node_modules/
+
+# os x
+.DS_Store
+
+# vs code
+typings/
