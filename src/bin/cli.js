@@ -33,8 +33,13 @@ const problemify = async function (srcDir, destDir, cb) {
         fileWriteable.end();
       });
 
-      fileReadable.on('error', err => console.error(err));
-      fileWriteable.on('error', err => console.error(err));
+      fileReadable.on('error', err => {
+        throw err;
+      });
+
+      fileWriteable.on('error', err => {
+        throw err;
+      });
     }
   };
 
@@ -53,11 +58,16 @@ const cli = meow(`
 
 (async () => {
   try {
-    const cliInput = formatPath(cli.input[0]);
-    const problemDest = `${cliInput}-problem`;
-    const solutionDest = `${cliInput}-solution`;
-    await problemify(cliInput, problemDest, prepareProblem);
-    await problemify(cliInput, solutionDest, prepareSolution);
+    const cliInput = cli.input[0];
+    if (!cliInput) {
+      throw new Error('Invalid input');
+    }
+
+    const formattedCliInput = formatPath(cliInput);
+    const problemDest = `${formattedCliInput}-problem`;
+    const solutionDest = `${formattedCliInput}-solution`;
+    await problemify(formattedCliInput, problemDest, prepareProblem);
+    await problemify(formattedCliInput, solutionDest, prepareSolution);
   } catch (err) {
     console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."));
     console.error(chalk.red(err.stack || err));
