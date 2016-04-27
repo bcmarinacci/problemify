@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk'
-import meow from 'meow'
-import {ncp} from 'ncp'
-import pify from 'pify'
-import rejectGitignore from '../lib/rejectGitignore'
-import formatPath from '../lib/formatPath'
-import prepareProblem from '../lib/prepareProblem'
-import prepareSolution from '../lib/prepareSolution'
+const chalk = require('chalk')
+const meow = require('meow')
+const ncp = require('ncp')
+const pify = require('pify')
+const rejectGitignore = require('../lib/rejectGitignore')
+const formatPath = require('../lib/formatPath')
+const prepareProblem = require('../lib/prepareProblem')
+const prepareSolution = require('../lib/prepareSolution')
 
-const problemify = async function (srcDir, destDir, cb) {
+const problemify = function (srcDir, destDir, cb) {
   // match root directory name without slashes
   const regex = /.*?\/*([^<>:"\/\\|?*]+)\/*$/
   const rootDirname = srcDir.replace(regex, '$1')
   let fileCount = 0
   const ncpOptions = {
-    stopOnErr: true,
+    // stopOnErr: true,
     filter: rejectGitignore,
     transform (fileReadable, fileWriteable) {
       let file = ''
@@ -29,7 +29,7 @@ const problemify = async function (srcDir, destDir, cb) {
         const srcIndex = srcName.lastIndexOf(rootDirname)
         const destName = fileWriteable.path
         const destIndex = destName.lastIndexOf(rootDirname)
-        console.log(`${++fileCount}. ${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`)
+        console.log(chalk.blue(`${++fileCount}. ${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`))
         fileWriteable.end()
       })
 
@@ -43,7 +43,7 @@ const problemify = async function (srcDir, destDir, cb) {
     }
   }
 
-  await pify(ncp)(srcDir, destDir, ncpOptions)
+  return pify(ncp)(srcDir, destDir, ncpOptions)
 }
 
 const cli = meow(`
@@ -56,21 +56,21 @@ const cli = meow(`
     kessel-run    kessel-run-problem    kessel-run-solution
 `)
 
-;(async () => {
-  try {
-    const cliInput = cli.input[0]
-    if (!cliInput) {
-      throw new Error('Invalid arguments')
-    }
+const cliInput = cli.input[0]
+if (!cliInput) {
+  console.log(chalk.blue(cli.help))
+  process.exit(1)
+}
 
-    const formattedCliInput = formatPath(cliInput)
-    const problemDest = `${formattedCliInput}-problem`
-    const solutionDest = `${formattedCliInput}-solution`
-    await problemify(formattedCliInput, problemDest, prepareProblem)
-    await problemify(formattedCliInput, solutionDest, prepareSolution)
-  } catch (err) {
+const formattedCliInput = formatPath(cliInput)
+const problemDest = `${formattedCliInput}-problem`
+const solutionDest = `${formattedCliInput}-solution`
+problemify(formattedCliInput, problemDest, prepareProblem)
+  .then(() => {
+    return problemify(formattedCliInput, solutionDest, prepareSolution)
+  })
+  .catch(err => {
     console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."))
     console.error(chalk.red(err.stack || err))
     process.exit(1)
-  }
-})()
+  })

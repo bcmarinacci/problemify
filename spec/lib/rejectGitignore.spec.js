@@ -1,6 +1,6 @@
 /* eslint prefer-arrow-callback: "off" */
 
-import rejectGitignore from '../../dist/lib/rejectGitignore'
+const rejectGitignore = require('../../lib/rejectGitignore')
 
 describe('rejectGitignore', function () {
   it('should not match common .gitignore paths', function () {

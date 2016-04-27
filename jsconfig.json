@@ -3,7 +3,6 @@
     "target": "es6"
   },
   "exclude": [
-    "dist",
     "node_modules",
     "typings",
     "test/fixtures/mockUtils-problem",

@@ -1,6 +1,6 @@
 /* eslint no-multiple-empty-lines: "off", prefer-arrow-callback: "off" */
 
-import prepareSolution from '../../dist/lib/prepareSolution'
+const prepareSolution = require('../../lib/prepareSolution')
 
 describe('prepareSolution', function () {
   it('should remove problem code', function () {

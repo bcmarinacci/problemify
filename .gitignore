@@ -1,5 +1,4 @@
 # app
-dist/
 spec/fixtures/mockUtils-problem/
 spec/fixtures/mockUtils-solution/
 

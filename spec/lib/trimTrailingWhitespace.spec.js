@@ -1,6 +1,6 @@
 /* eslint prefer-arrow-callback: "off" */
 
-import trim from '../../dist/lib/trimTrailingWhitespace'
+const trim = require('../../lib/trimTrailingWhitespace')
 
 describe('trimTrailingWhitespace', function () {
   it('should remove trailing space characters', function () {

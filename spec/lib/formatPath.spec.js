@@ -1,6 +1,6 @@
 /* eslint prefer-arrow-callback: "off" */
 
-import formatPath from '../../dist/lib/formatPath'
+const formatPath = require('../../lib/formatPath')
 
 describe('formatPath', function () {
   it('should remove trailing slashes', function () {

@@ -2,7 +2,9 @@
 
 > Create a problem and a solution version of a repository.
 
-Automatically exlcluded project components:
+NOTE: This package requires Node.js V6.0.0 or later!
+
+The following project components are automatically excluded:
 - .DS_Store
 - .git
 - bower_components
