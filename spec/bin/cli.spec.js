@@ -1,8 +1,7 @@
 /* eslint prefer-arrow-callback: "off" */
 
-const fs = require('fs')
-const childProcess = require('child_process')
-const pify = require('pify')
+const {readFileSync} = require('fs')
+const {execFileSync} = require('child_process')
 
 const fixturePaths = {
   problemForEach: '../fixtures/mockUtils-problem/higherOrder/forEach/forEach.js',
@@ -108,26 +107,24 @@ print(jedi)
 
 describe('CLI', function () {
   it('should write the correct content', function (done) {
-    const pathKeys = Object.keys(fixturePaths)
-    pify(childProcess.execFile)(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/mockUtils`])
-      .then(() => {
-        // Store output file contents in an array
-        return Promise.all(pathKeys.map(pathKey => {
-          const path = fixturePaths[pathKey]
+    try {
+      const pathKeys = Object.keys(fixturePaths)
+      execFileSync(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/mockUtils`])
+      const files = pathKeys.map(pathKey => {
+        const path = fixturePaths[pathKey]
 
-          return pify(fs.readFile)(`${__dirname}/${path}`, 'utf8')
-        }))
+        return readFileSync(`${__dirname}/${path}`, 'utf8')
       })
-      .then(files => {
-        // Assert whether the contents of each output file is correct
-        files.forEach((file, i) => {
-          const pathKey = pathKeys[i]
-          const result = results[pathKey]
 
-          expect(file).toEqual(result)
-          done()
-        })
+      files.forEach((file, i) => {
+        const pathKey = pathKeys[i]
+        const result = results[pathKey]
+
+        expect(file).toEqual(result)
+        done()
       })
-      .catch(done.fail)
+    } catch (err) {
+      done.fail(err)
+    }
   })
 })
