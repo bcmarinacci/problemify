@@ -42,6 +42,10 @@
   "bugs": {
     "url": "https://github.com/bcmarinacci/problemify/issues"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "devDependencies": {
     "eslint": "^2.8.0",
     "eslint-config-standard": "^5.2.0",
