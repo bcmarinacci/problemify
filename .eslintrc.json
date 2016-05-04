@@ -1,20 +1,23 @@
 {
   "root": true,
   "parserOptions": {
-    "ecmaVersion": 7,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread ": true
-    }
+    "ecmaVersion": 6
   },
   "env": {
     "es6": true,
     "jasmine": true,
     "node": true
   },
-  "extends": "standard",
+  "extends": "airbnb",
   "plugins": [
-    "standard",
-    "promise"
-  ]
+    "import",
+    "jsx-a11y",
+    "react"
+  ],
+  "rules": {
+    "comma-dangle": "off",
+    "func-names": "off",
+    "max-len": "off",
+    "no-console": "off"
+  }
 }

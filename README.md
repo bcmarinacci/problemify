@@ -1,8 +1,6 @@
-# problemify [![Build Status](https://travis-ci.org/bcmarinacci/problemify.svg?branch=master)](https://travis-ci.org/bcmarinacci/problemify) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+# problemify [![Build Status](https://travis-ci.org/bcmarinacci/problemify.svg?branch=master)](https://travis-ci.org/bcmarinacci/problemify)
 
 > Create a problem and a solution version of a repository.
-
-NOTE: This package requires Node.js V6.0.0 or later!
 
 The following project components are automatically excluded:
 - .DS_Store
@@ -34,28 +32,28 @@ $ problemify --help
     kessel-run    kessel-run-problem    kessel-run-solution
 ```
 
-### Problem comment syntax
+### Problem code
 
 Wrap problem code with `/* start problem` and `end problem */` comments.
 
 ```javascript
 /* start problem
-function print (value) {
+const print = function (value) {
   // your code here
 
-}
+};
 end problem */
 ```
 
-### Solution comment syntax
+### Solution code
 
 Wrap solution code with `// start solution` and `// end solution` comments.
 
 ```javascript
 // start solution
-function print (value) {
-  console.log(value)
-}
+const print = function (value) {
+  console.log(value);
+};
 // end solution
 ```
 
@@ -65,43 +63,43 @@ function print (value) {
 
 ```javascript
 // start solution
-function print (value) {
-  console.log(value)
-}
+const print = function (value) {
+  console.log(value);
+};
 // end solution
 /* start problem
-function print (value) {
+const print = function (value) {
   // your code here
 
-}
+};
 end problem */
 
-const pilot = 'Han Solo'
-print(pilot)
-// → Han Solo
+const pilot = 'Han Solo';
+print(pilot);
+// Han Solo
 ```
 
 ### kessel-run-problem
 
 ```javascript
-function print (value) {
+const print = function (value) {
   // your code here
 
-}
+};
 
-const pilot = 'Han Solo'
-print(pilot)
-// → Han Solo
+const pilot = 'Han Solo';
+print(pilot);
+// Han Solo
 ```
 
 ### kessel-run-solution
 
 ```javascript
-function print (value) {
-  console.log(value)
-}
+const print = function (value) {
+  console.log(value);
+};
 
-const pilot = 'Han Solo'
-print(pilot)
-// → Han Solo
+const pilot = 'Han Solo';
+print(pilot);
+// Han Solo
 ```

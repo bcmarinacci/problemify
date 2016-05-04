@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es6"
+    "target": "es6",
+    "module": "commonjs"
   },
   "exclude": [
     "node_modules",
-    "typings",
     "test/fixtures/mockUtils-problem",
     "test/fixtures/mockUtils-solution"
   ]

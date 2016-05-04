@@ -1,19 +1,19 @@
 /* eslint prefer-arrow-callback: "off" */
 
-const trim = require('../../lib/trimTrailingWhitespace')
+const trim = require('../../lib/trimTrailingWhitespace');
 
 describe('trimTrailingWhitespace', function () {
   it('should remove trailing space characters', function () {
-    const mock = 'a \nb  \n  '
-    const result = 'a\nb\n'
+    const mock = 'a \nb  \n  ';
+    const result = 'a\nb\n';
 
-    expect(trim(mock)).toEqual(result)
-  })
+    expect(trim(mock)).toEqual(result);
+  });
 
   it('should remove trailing tab characters', function () {
-    const mock = 'a\t\nb\t\t\n\t\t'
-    const result = 'a\nb\n'
+    const mock = 'a\t\nb\t\t\n\t\t';
+    const result = 'a\nb\n';
 
-    expect(trim(mock)).toEqual(result)
-  })
-})
+    expect(trim(mock)).toEqual(result);
+  });
+});
