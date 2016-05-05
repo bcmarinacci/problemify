@@ -1,12 +1,9 @@
-# app
-spec/fixtures/mockUtils-problem/
-spec/fixtures/mockUtils-solution/
+# App
+spec/fixtures/mockUtils-problem
+spec/fixtures/mockUtils-solution
 
-# node
-node_modules/
+# Node.js
+node_modules
 
-# os x
+# OS X
 .DS_Store
-
-# vs code
-typings/
