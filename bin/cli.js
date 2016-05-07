@@ -29,7 +29,7 @@ const problemify = function (srcDir, destDir, cb) {
         const srcIndex = srcName.lastIndexOf(rootDirname);
         const destName = fileWriteable.path;
         const destIndex = destName.lastIndexOf(rootDirname);
-        console.log(chalk.blue(`${++fileCount}. ${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`));
+        console.log(`${++fileCount}. ${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
         fileWriteable.end();
       });
 
@@ -58,7 +58,7 @@ const cli = meow(`
 
 const cliInput = cli.input[0];
 if (!cliInput) {
-  console.log(chalk.blue(cli.help));
+  console.log(cli.help);
   process.exit(1);
 }
 
