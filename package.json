@@ -8,9 +8,9 @@
   },
   "scripts": {
     "clean": "rm -rf test/fixtures/mockUtils-{problem,solution}",
-    "lint": "eslint --fix bin/ lib/ spec/",
+    "lint": "eslint --fix bin/ lib/ test/",
     "prepublish": "npm run test",
-    "test": "jasmine && npm run lint",
+    "test": "tape test/**/*.test.js | faucet && npm run lint",
     "preversion": "npm run test",
     "postversion": "git push && git push --tags"
   },
@@ -52,7 +52,9 @@
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
-    "jasmine": "^2.4.1"
+    "faucet": "0.0.1",
+    "jasmine": "^2.4.1",
+    "tape": "^4.5.1"
   },
   "dependencies": {
     "chalk": "^1.1.3",

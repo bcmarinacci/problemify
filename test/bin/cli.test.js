@@ -1,5 +1,4 @@
-/* eslint prefer-arrow-callback: "off" */
-
+const test = require('tape');
 const { readFileSync } = require('fs');
 const { execFileSync } = require('child_process');
 
@@ -105,26 +104,25 @@ print(jedi);
 // Qui-Gon
 `;
 
-describe('CLI', function () {
-  it('should write the correct content', function (done) {
-    try {
-      const pathKeys = Object.keys(fixturePaths);
-      execFileSync(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/mockUtils`]);
-      const files = pathKeys.map(pathKey => {
-        const path = fixturePaths[pathKey];
+test('should write the correct content', (t) => {
+  t.plan(6);
 
-        return readFileSync(`${__dirname}/${path}`, 'utf8');
-      });
+  try {
+    const pathKeys = Object.keys(fixturePaths);
+    execFileSync(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/mockUtils`]);
+    const files = pathKeys.map(pathKey => {
+      const path = fixturePaths[pathKey];
 
-      files.forEach((file, i) => {
-        const pathKey = pathKeys[i];
-        const result = results[pathKey];
+      return readFileSync(`${__dirname}/${path}`, 'utf8');
+    });
 
-        expect(file).toEqual(result);
-        done();
-      });
-    } catch (err) {
-      done.fail(err);
-    }
-  });
+    files.forEach((file, i) => {
+      const pathKey = pathKeys[i];
+      const result = results[pathKey];
+
+      t.equal(file, result);
+    });
+  } catch (err) {
+    t.fail(err.message);
+  }
 });
