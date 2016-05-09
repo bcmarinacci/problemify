@@ -6,6 +6,9 @@
     "node": ">=6.0.0",
     "npm": ">=3.8.6"
   },
+  "bin": {
+    "problemify": "./bin/cli.js"
+  },
   "scripts": {
     "clean": "rm -rf test/fixtures/mockUtils-{problem,solution}",
     "lint": "eslint --fix bin/ lib/ test/",
@@ -14,12 +17,14 @@
     "preversion": "npm run test",
     "postversion": "git push && git push --tags"
   },
-  "bin": {
-    "problemify": "./bin/cli.js"
-  },
+  "author": "Benjamin Marinacci",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/bcmarinacci/problemify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bcmarinacci/problemify/issues"
   },
   "keywords": [
     "assignment",
@@ -37,11 +42,6 @@
     "strip",
     "trim"
   ],
-  "author": "Benjamin Marinacci",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bcmarinacci/problemify/issues"
-  },
   "files": [
     "bin",
     "lib"
