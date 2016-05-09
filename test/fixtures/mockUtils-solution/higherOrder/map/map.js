@@ -1,3 +1,5 @@
+'use strict';
+
 // Write a function that returns an array of mapped elements
 // solution code
 const map = function (array, cb) {

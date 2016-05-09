@@ -1,3 +1,5 @@
+'use strict';
+
 const test = require('tape');
 const prepareSolution = require('../../lib/prepareSolution');
 

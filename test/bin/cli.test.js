@@ -1,3 +1,5 @@
+'use strict';
+
 const test = require('tape');
 const { readFileSync } = require('fs');
 const { execFileSync } = require('child_process');
@@ -12,7 +14,9 @@ const fixturePaths = {
 };
 
 const results = {};
-results.problemForEach = `// Write a function that invokes a callback on each element in an array
+results.problemForEach = `'use strict';
+
+// Write a function that invokes a callback on each element in an array
 // problem code
 const forEach = function () {
   // your code here
@@ -28,7 +32,9 @@ forEach(droids, console.log);
 // BB-8
 `;
 
-results.problemMap = `// Write a function that returns an array of mapped elements
+results.problemMap = `'use strict';
+
+// Write a function that returns an array of mapped elements
 // problem code
 const map = function () {
   // your code here
@@ -42,7 +48,9 @@ map(numbers, n => n * n);
 // [1, 4, 9, 16, 25]
 `;
 
-results.problemPrint = `// Write a function that prints a value to the console
+results.problemPrint = `'use strict';
+
+// Write a function that prints a value to the console
 // problem code
 const print = function () {
   // your code here
@@ -56,7 +64,9 @@ print(jedi);
 // Qui-Gon
 `;
 
-results.solutionForEach = `// Write a function that invokes a callback on each element in an array
+results.solutionForEach = `'use strict';
+
+// Write a function that invokes a callback on each element in an array
 // solution code
 const forEach = function (array, cb) {
   for (let i = 0; i < array.length; i++) {
@@ -73,7 +83,9 @@ forEach(droids, console.log);
 // BB-8
 `;
 
-results.solutionMap = `// Write a function that returns an array of mapped elements
+results.solutionMap = `'use strict';
+
+// Write a function that returns an array of mapped elements
 // solution code
 const map = function (array, cb) {
   const result = [];
@@ -91,7 +103,9 @@ map(numbers, n => n * n);
 // [1, 4, 9, 16, 25]
 `;
 
-results.solutionPrint = `// Write a function that prints a value to the console
+results.solutionPrint = `'use strict';
+
+// Write a function that prints a value to the console
 // solution code
 const print = function (value) {
   console.log(value);

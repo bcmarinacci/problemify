@@ -1,3 +1,5 @@
+'use strict';
+
 // Write a function that invokes a callback on each element in an array
 // start solution
 // solution code

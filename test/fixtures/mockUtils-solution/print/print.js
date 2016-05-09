@@ -1,3 +1,5 @@
+'use strict';
+
 // Write a function that prints a value to the console
 // solution code
 const print = function (value) {
