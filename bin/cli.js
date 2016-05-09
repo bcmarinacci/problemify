@@ -15,7 +15,7 @@ const problemify = function (srcDir, destDir, cb) {
   const rootDirname = srcDir.replace(regex, '$1');
   let fileCount = 0;
   const ncpOptions = {
-    // stopOnErr: true,
+    stopOnErr: true,
     filter: rejectGitignore,
     transform(fileReadable, fileWriteable) {
       let file = '';
@@ -24,13 +24,12 @@ const problemify = function (srcDir, destDir, cb) {
       });
 
       fileReadable.on('end', () => {
-        fileWriteable.write(cb(file));
         const srcName = fileReadable.path;
         const srcIndex = srcName.lastIndexOf(rootDirname);
         const destName = fileWriteable.path;
         const destIndex = destName.lastIndexOf(rootDirname);
         console.log(`${++fileCount}. ${srcName.slice(srcIndex)} → ${destName.slice(destIndex)}`);
-        fileWriteable.end();
+        fileWriteable.end(cb(file));
       });
 
       fileReadable.on('error', err => {
