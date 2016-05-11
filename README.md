@@ -15,21 +15,13 @@ The following project components are automatically excluded:
 ## Install
 
 ```bash
-npm install -g problemify
+$ npm install -g problemify
 ```
 
 ## Usage
 
 ```bash
-$ problemify --help
-
-  Usage
-    $ problemify <repository>
-
-  Example
-    $ problemify kessel-run
-    $ ls
-    kessel-run    kessel-run-problem    kessel-run-solution
+$ problemify <repository>
 ```
 
 ### Problem code
@@ -57,7 +49,13 @@ const print = function (value) {
 // end solution
 ```
 
-## Example
+## Examples
+
+```bash
+$ problemify kessel-run
+$ ls
+kessel-run    kessel-run-problem    kessel-run-solution
+```
 
 ### kessel-run
 
