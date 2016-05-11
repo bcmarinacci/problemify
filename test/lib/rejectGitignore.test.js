@@ -3,7 +3,7 @@
 const test = require('tape');
 const rejectGitignore = require('../../lib/rejectGitignore');
 
-test('should not match common .gitignore paths', (t) => {
+test('should not match common .gitignore paths', t => {
   t.plan(8);
 
   t.notOk(rejectGitignore('path/.git'));
@@ -16,7 +16,7 @@ test('should not match common .gitignore paths', (t) => {
   t.notOk(rejectGitignore('path/.DS_Store'));
 });
 
-test('should match other paths', (t) => {
+test('should match other paths', t => {
   t.plan(3);
 
   t.ok(rejectGitignore('path/something/file.js'));

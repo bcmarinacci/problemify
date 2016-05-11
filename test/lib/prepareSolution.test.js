@@ -3,7 +3,7 @@
 const test = require('tape');
 const prepareSolution = require('../../lib/prepareSolution');
 
-test('should remove problem code', (t) => {
+test('should remove problem code', t => {
   t.plan(7);
 
   t.equal(prepareSolution('/* start problem\nconst jedi = "Rey;"\nend problem */\nconst droid = "R2-D2";'), 'const droid = "R2-D2";');
@@ -15,7 +15,7 @@ test('should remove problem code', (t) => {
   t.equal(prepareSolution('/* START PROBLEM\nconst jedi = "Rey;"\nEND PROBLEM */\nconst droid = "R2-D2";'), 'const droid = "R2-D2";');
 });
 
-test('should remove solution comments', (t) => {
+test('should remove solution comments', t => {
   t.plan(7);
 
   t.equal(prepareSolution('// start solution\nconst x = 2187;\n// end solution\nconst pilot = "Han";\n'), 'const x = 2187;\nconst pilot = "Han";\n');
@@ -27,7 +27,7 @@ test('should remove solution comments', (t) => {
   t.equal(prepareSolution('// START SOLUTION\nconst x = 2187;\n// END SOLUTION\nconst pilot = "Han";\n'), 'const x = 2187;\nconst pilot = "Han";\n');
 });
 
-test('should not modify normal code', (t) => {
+test('should not modify normal code', t => {
   t.plan(1);
 
   const mock = '// normal code';
@@ -35,7 +35,7 @@ test('should not modify normal code', (t) => {
   t.equal(prepareSolution(mock), mock);
 });
 
-test('should retain indentation', (t) => {
+test('should retain indentation', t => {
   t.plan(1);
 
   const mock = '   const copilot = "Chewbacca";\n    console.log(copilot);\n';
@@ -43,7 +43,7 @@ test('should retain indentation', (t) => {
   t.equal(prepareSolution(mock), mock);
 });
 
-test('should remove problem code whie leaving non-problem code', (t) => {
+test('should remove problem code whie leaving non-problem code', t => {
   t.plan(1);
 
   const mock = `
@@ -73,7 +73,7 @@ test('should remove problem code whie leaving non-problem code', (t) => {
   t.equal(prepareSolution(mock), result);
 });
 
-test('should remove solution comments while leaving non-problem code', (t) => {
+test('should remove solution comments while leaving non-problem code', t => {
   t.plan(1);
 
   const mock = `

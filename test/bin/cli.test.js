@@ -118,7 +118,7 @@ print(jedi);
 // Qui-Gon
 `;
 
-test('should write the correct content', (t) => {
+test('should write the correct content', t => {
   t.plan(6);
 
   try {

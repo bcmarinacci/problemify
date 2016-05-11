@@ -3,7 +3,7 @@
 const test = require('tape');
 const prepareProblem = require('../../lib/prepareProblem');
 
-test('should remove solution code', (t) => {
+test('should remove solution code', t => {
   t.plan(7);
 
   t.equal(prepareProblem('// start solution\nconst x = 2187;\n// end solution\nconst pilot = "Han;"\n'), 'const pilot = "Han;"\n');
@@ -15,7 +15,7 @@ test('should remove solution code', (t) => {
   t.equal(prepareProblem('// START SOLUTION\nconst x = 2187;\n// END SOLUTION\nconst pilot = "Han;"\n'), 'const pilot = "Han;"\n');
 });
 
-test('should remove problem comments', (t) => {
+test('should remove problem comments', t => {
   t.plan(7);
 
   t.equal(prepareProblem('/* start problem\nconst jedi = "Rey;"\nend problem */\n'), 'const jedi = "Rey;"\n');
@@ -27,7 +27,7 @@ test('should remove problem comments', (t) => {
   t.equal(prepareProblem('/* START PROBLEM\nconst jedi = "Rey;"\nEND PROBLEM */\n'), 'const jedi = "Rey;"\n');
 });
 
-test('should not modify normal code', (t) => {
+test('should not modify normal code', t => {
   t.plan(1);
 
   const mock = '// normal code';
@@ -35,7 +35,7 @@ test('should not modify normal code', (t) => {
   t.equal(prepareProblem(mock), mock);
 });
 
-test('should retain indentation', (t) => {
+test('should retain indentation', t => {
   t.plan(1);
 
   const mock = '   const copilot = "Chewbacca";\n    console.log(copilot);\n';
@@ -43,7 +43,7 @@ test('should retain indentation', (t) => {
   t.equal(prepareProblem(mock), mock);
 });
 
-test('should remove solution code while leaving non-solution code', (t) => {
+test('should remove solution code while leaving non-solution code', t => {
   t.plan(1);
 
   const mock = `
@@ -73,7 +73,7 @@ test('should remove solution code while leaving non-solution code', (t) => {
   t.equal(prepareProblem(mock), result);
 });
 
-test('should remove problem comments while leaving non-solution code', (t) => {
+test('should remove problem comments while leaving non-solution code', t => {
   t.plan(1);
 
   const mock = `
