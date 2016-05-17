@@ -1,6 +1,10 @@
-# problemify [![Build Status](https://travis-ci.org/bcmarinacci/problemify.svg?branch=master)](https://travis-ci.org/bcmarinacci/problemify)
+# problemify
 
-> Create a problem and a solution version of a repository.
+[![Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+
+> Create a problem and a solution version of a repository
 
 The following project components are automatically excluded:
 - .DS_Store
@@ -101,3 +105,14 @@ const pilot = 'Han Solo';
 print(pilot);
 // Han Solo
 ```
+
+## License
+
+MIT
+
+[npm-image]: https://img.shields.io/npm/v/problemify.svg
+[npm-url]: https://www.npmjs.com/package/problemify
+[travis-image]: https://travis-ci.org/bcmarinacci/problemify.svg?branch=master
+[travis-url]: https://travis-ci.org/bcmarinacci/problemify
+[coveralls-image]: https://coveralls.io/repos/github/bcmarinacci/problemify/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/bcmarinacci/problemify?branch=master

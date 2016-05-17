@@ -4,6 +4,3 @@ spec/fixtures/mockUtils-solution
 
 # Node.js
 node_modules
-
-# OS X
-.DS_Store
