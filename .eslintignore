@@ -4,3 +4,6 @@ spec/fixtures/mockUtils-solution
 
 # Node.js
 node_modules
+
+# Istanbul
+coverage

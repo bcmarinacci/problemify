@@ -1,20 +1,10 @@
 # problemify
 
-[![Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][circleci-image]][circleci-url]
+[![Coverage Status][codecov-image]][codecov-url]
 
 > Create a problem and a solution version of a repository
-
-The following project components are automatically excluded:
-- .DS_Store
-- .git
-- bower_components
-- dist
-- jspm_packages
-- node_modules
-- tem
-- temp
 
 ## Install
 
@@ -27,6 +17,16 @@ $ npm install -g problemify
 ```bash
 $ problemify <repository>
 ```
+
+The following project components are automatically excluded:
+- .DS_Store
+- .git
+- bower_components
+- dist
+- jspm_packages
+- node_modules
+- tem
+- temp
 
 ### Problem code
 
@@ -110,9 +110,9 @@ print(pilot);
 
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/problemify.svg
+[npm-image]: https://img.shields.io/npm/v/problemify.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/problemify
-[travis-image]: https://travis-ci.org/bcmarinacci/problemify.svg?branch=master
-[travis-url]: https://travis-ci.org/bcmarinacci/problemify
-[coveralls-image]: https://coveralls.io/repos/github/bcmarinacci/problemify/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/bcmarinacci/problemify?branch=master
+[circleci-image]: https://img.shields.io/circleci/project/bcmarinacci/problemify/master.svg?style=flat-square
+[circleci-url]: https://circleci.com/gh/bcmarinacci/problemify
+[codecov-image]: https://img.shields.io/codecov/c/github/bcmarinacci/problemify/master.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/bcmarinacci/problemify

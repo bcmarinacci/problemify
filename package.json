@@ -3,8 +3,8 @@
   "version": "0.5.7",
   "description": "Create a problem and a solution version of a repository",
   "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=3.8.6"
+    "node": "^6.1.0",
+    "npm": "^3.8.6"
   },
   "bin": {
     "problemify": "./bin/cli.js"
@@ -47,7 +47,6 @@
     "lib"
   ],
   "devDependencies": {
-    "coveralls": "^2.11.9",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-import": "^1.6.1",
@@ -61,6 +60,6 @@
     "meow": "^3.7.0",
     "ncp": "^2.0.0",
     "pify": "^2.3.0",
-    "trim-whitespace": "^1.1.0"
+    "trim-whitespace": "^1.1.4"
   }
 }
