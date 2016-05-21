@@ -61,6 +61,6 @@
     "meow": "^3.7.0",
     "ncp": "^2.0.0",
     "pify": "^2.3.0",
-    "trim-whitespace": "^1.1.5"
+    "trim-whitespace": "^1.1.6"
   }
 }

@@ -2,7 +2,7 @@
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][circleci-image]][circleci-url]
-[![Coverage Status][codecov-image]][codecov-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 
 > Create a problem and a solution version of a repository
 
@@ -113,6 +113,6 @@ MIT
 [npm-image]: https://img.shields.io/npm/v/problemify.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/problemify
 [circleci-image]: https://img.shields.io/circleci/project/bcmarinacci/problemify/master.svg?style=flat-square
-[circleci-url]: https://circleci.com/gh/bcmarinacci/problemify
-[codecov-image]: https://img.shields.io/codecov/c/github/bcmarinacci/problemify/master.svg?style=flat-square
-[codecov-url]: https://codecov.io/gh/bcmarinacci/problemify
+[circleci-url]: https://circleci.com/gh/bcmarinacci/problemify/tree/master
+[coveralls-image]: https://img.shields.io/coveralls/bcmarinacci/problemify/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/github/bcmarinacci/problemify?branch=master
