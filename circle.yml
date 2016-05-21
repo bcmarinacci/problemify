@@ -2,10 +2,10 @@ machine:
   node:
     version: node
 
-test:
-  post:
-    - bash <(curl -s https://codecov.io/bash)
-
 general:
   artifacts:
     - ./coverage
+
+test:
+  post:
+    - cat ./coverage/lcov.info | coveralls

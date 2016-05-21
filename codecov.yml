@@ -1,5 +1,0 @@
-coverage:
-  ignore:
-    - coverage
-    - node_modules
-    - test
