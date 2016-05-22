@@ -5,12 +5,12 @@ const { readFileSync } = require('fs');
 const { execFileSync } = require('child_process');
 
 const fixturePaths = {
-  problemForEach: '../fixtures/mockUtils-problem/higherOrder/forEach/forEach.js',
-  problemMap: '../fixtures/mockUtils-problem/higherOrder/map/map.js',
-  problemPrint: '../fixtures/mockUtils-problem/print/print.js',
-  solutionForEach: '../fixtures/mockUtils-solution/higherOrder/forEach/forEach.js',
-  solutionMap: '../fixtures/mockUtils-solution/higherOrder/map/map.js',
-  solutionPrint: '../fixtures/mockUtils-solution/print/print.js'
+  problemForEach: '../fixtures/utils-problem/higher-order/for-each/for-each.js',
+  problemMap: '../fixtures/utils-problem/higher-order/map/map.js',
+  problemPrint: '../fixtures/utils-problem/print/print.js',
+  solutionForEach: '../fixtures/utils-solution/higher-order/for-each/for-each.js',
+  solutionMap: '../fixtures/utils-solution/higher-order/map/map.js',
+  solutionPrint: '../fixtures/utils-solution/print/print.js'
 };
 
 const results = {};
@@ -123,7 +123,7 @@ test('should write the correct content', t => {
 
   try {
     const pathKeys = Object.keys(fixturePaths);
-    execFileSync(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/mockUtils`]);
+    execFileSync(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/utils`]);
     const files = pathKeys.map(pathKey => {
       const path = fixturePaths[pathKey];
 

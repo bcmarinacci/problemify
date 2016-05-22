@@ -1,7 +1,7 @@
 'use strict';
 
 const test = require('tape');
-const prepareProblem = require('../../lib/prepareProblem');
+const prepareProblem = require('../../lib/prepare-problem');
 
 test('should remove solution code', t => {
   t.plan(7);

@@ -10,7 +10,7 @@
     "problemify": "./bin/cli.js"
   },
   "scripts": {
-    "clean": "rm -rf test/fixtures/mockUtils-{problem,solution}",
+    "clean": "rm -rf test/fixtures/utils-{problem,solution}",
     "lint": "eslint --fix bin/ lib/ test/",
     "prepublish": "npm run test",
     "test": "istanbul cover tape -- test/**/*.test.js && npm run lint",

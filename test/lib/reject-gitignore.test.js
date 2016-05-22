@@ -1,7 +1,7 @@
 'use strict';
 
 const test = require('tape');
-const rejectGitignore = require('../../lib/rejectGitignore');
+const rejectGitignore = require('../../lib/reject-gitignore');
 
 test('should not match common .gitignore paths', t => {
   t.plan(8);

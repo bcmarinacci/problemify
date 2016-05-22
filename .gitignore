@@ -1,6 +1,6 @@
 # App
-spec/fixtures/mockUtils-problem
-spec/fixtures/mockUtils-solution
+test/fixtures/utils-problem
+test/fixtures/utils-solution
 
 # Logs
 logs

@@ -1,7 +1,7 @@
 'use strict';
 
 const test = require('tape');
-const formatPath = require('../../lib/formatPath');
+const formatPath = require('../../lib/format-path');
 
 test('should remove trailing slashes', t => {
   t.plan(6);

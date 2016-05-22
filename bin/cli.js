@@ -3,9 +3,9 @@
 
 const args = require('args');
 const chalk = require('chalk');
-const formatPath = require('../lib/formatPath');
-const prepareProblem = require('../lib/prepareProblem');
-const prepareSolution = require('../lib/prepareSolution');
+const formatPath = require('../lib/format-path');
+const prepareProblem = require('../lib/prepare-problem');
+const prepareSolution = require('../lib/prepare-solution');
 const copyDirectory = require('../lib/copy-directory');
 
 args
