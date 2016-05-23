@@ -4,7 +4,7 @@
 [![Build Status][circleci-image]][circleci-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
-> Create a problem and a solution version of a repository
+> Create a problem and a solution version of a directory
 
 ## Install
 
@@ -15,7 +15,7 @@ $ npm install -g problemify
 ## Usage
 
 ```bash
-$ problemify <repository>
+$ problemify <directory>
 ```
 
 The following project components are automatically excluded:
