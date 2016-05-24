@@ -1,6 +1,6 @@
+/* eslint-disable prefer-arrow-callback */
 'use strict';
 
-const test = require('tape');
 const { readFileSync } = require('fs');
 const { execFileSync } = require('child_process');
 
@@ -118,10 +118,8 @@ print(jedi);
 // Qui-Gon
 `;
 
-test('should write the correct content', t => {
-  t.plan(6);
-
-  try {
+describe('cli', function () {
+  it('should write the correct content', function (done) {
     const pathKeys = Object.keys(fixturePaths);
     execFileSync(`${__dirname}/../../bin/cli.js`, [`${__dirname}/../fixtures/utils`]);
     const files = pathKeys.map(pathKey => {
@@ -134,9 +132,8 @@ test('should write the correct content', t => {
       const pathKey = pathKeys[i];
       const result = results[pathKey];
 
-      t.equal(file, result);
+      expect(result).toEqual(file);
+      done();
     });
-  } catch (err) {
-    t.fail(err.message);
-  }
+  });
 });

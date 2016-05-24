@@ -4,7 +4,7 @@
 [![Build Status][circleci-image]][circleci-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
-> Create a problem and a solution version of a directory
+> Create problem and solution versions of a directory
 
 ## Install
 
