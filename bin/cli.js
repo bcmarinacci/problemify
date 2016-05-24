@@ -9,8 +9,7 @@ const prepareSolution = require('../lib/prepare-solution');
 const copyDirectory = require('../lib/copy-directory');
 
 args
-  .command('<directory>', 'The directory to copy')
-  .parse(process.argv);
+  .parse(process.argv, { value: '<directory>' });
 
 const argv = args.sub;
 if (argv.length === 0) {
