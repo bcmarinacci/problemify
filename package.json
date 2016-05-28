@@ -12,7 +12,6 @@
   "scripts": {
     "clean": "rm -rf spec/fixtures/utils-{problem,solution}",
     "lint": "eslint --fix bin/ lib/ spec/",
-    "prepublish": "npm run test",
     "test": "istanbul cover jasmine && npm run lint",
     "preversion": "npm run test",
     "postversion": "git push && git push --tags"
@@ -48,11 +47,11 @@
   ],
   "devDependencies": {
     "coveralls": "^2.11.9",
-    "eslint": "^2.9.0",
+    "eslint": "^2.11.0",
     "eslint-config-airbnb": "^8.0.0",
-    "eslint-plugin-import": "^1.6.1",
-    "eslint-plugin-jsx-a11y": "^1.0.4",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
     "istanbul": "^0.4.3",
     "jasmine": "^2.4.1"
   },
@@ -62,6 +61,6 @@
     "lodash.flattendeep": "^4.2.0",
     "ncp": "^2.0.0",
     "pify": "^2.3.0",
-    "trim-whitespace": "^1.1.7"
+    "trim-whitespace": "^1.2.4"
   }
 }
