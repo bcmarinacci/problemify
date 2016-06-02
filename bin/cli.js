@@ -12,8 +12,12 @@ if (argv.length === 0) {
   args.showHelp();
 }
 
-problemify(argv[0]).catch(err => {
-  console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."));
-  console.error(chalk.red(err.stack || err));
-  process.exit(1);
-});
+problemify(argv[0])
+  .then(fileList => {
+    fileList.forEach(filepath => console.log(filepath));
+  })
+  .catch(err => {
+    console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."));
+    console.error(chalk.red(err.stack || err));
+    process.exit(1);
+  });
