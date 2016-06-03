@@ -1,0 +1,9 @@
+// start solution
+This block should not be affected.
+// end solution
+
+/*
+Neither should this block.
+*/
+
+Text outside of either block should not be affected either.

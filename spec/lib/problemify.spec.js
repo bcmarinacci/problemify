@@ -3,7 +3,6 @@
 
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
-// const { execFileSync } = require('child_process');
 const problemify = require('../../lib/problemify');
 
 const contents = {};
@@ -39,6 +38,16 @@ const numbers = [1, 2, 3, 4, 5];
 
 map(numbers, n => n * n);
 // [1, 4, 9, 16, 25]
+`;
+
+contents.problemIndex = `<body>
+
+  <div class="x-wing"></div>
+
+  <div class="problem"></div>
+
+  <div class="y-wing"></div>
+</body>
 `;
 
 contents.problemPrint = `'use strict';
@@ -116,10 +125,14 @@ describe('problemify', function () {
     this.fileList = [
       resolve(`${__dirname}/../fixtures/utils-problem/higher-order/for-each/for-each.js`),
       resolve(`${__dirname}/../fixtures/utils-problem/higher-order/map/map.js`),
+      resolve(`${__dirname}/../fixtures/utils-problem/index.html`),
       resolve(`${__dirname}/../fixtures/utils-problem/print/print.js`),
+      resolve(`${__dirname}/../fixtures/utils-problem/text.txt`),
       resolve(`${__dirname}/../fixtures/utils-solution/higher-order/for-each/for-each.js`),
       resolve(`${__dirname}/../fixtures/utils-solution/higher-order/map/map.js`),
-      resolve(`${__dirname}/../fixtures/utils-solution/print/print.js`)
+      resolve(`${__dirname}/../fixtures/utils-solution/index.html`),
+      resolve(`${__dirname}/../fixtures/utils-solution/print/print.js`),
+      resolve(`${__dirname}/../fixtures/utils-solution/text.txt`)
     ];
   });
 
@@ -137,10 +150,11 @@ describe('problemify', function () {
       .then(files => {
         expect(readFileSync(files[0], 'utf8')).toEqual(contents.problemForEach);
         expect(readFileSync(files[1], 'utf8')).toEqual(contents.problemMap);
-        expect(readFileSync(files[2], 'utf8')).toEqual(contents.problemPrint);
-        expect(readFileSync(files[3], 'utf8')).toEqual(contents.solutionForEach);
-        expect(readFileSync(files[4], 'utf8')).toEqual(contents.solutionMap);
-        expect(readFileSync(files[5], 'utf8')).toEqual(contents.solutionPrint);
+        expect(readFileSync(files[2], 'utf8')).toEqual(contents.problemIndex);
+        expect(readFileSync(files[3], 'utf8')).toEqual(contents.problemPrint);
+        expect(readFileSync(files[5], 'utf8')).toEqual(contents.solutionForEach);
+        expect(readFileSync(files[6], 'utf8')).toEqual(contents.solutionMap);
+        expect(readFileSync(files[8], 'utf8')).toEqual(contents.solutionPrint);
         done();
       })
       .catch(done.fail);

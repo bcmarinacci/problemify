@@ -12,6 +12,7 @@ describe('prepareProblem', function () {
     expect(prepareProblem('//start solution\nconst x = 2187;\n//end solution\nconst pilot = "Han;"\n')).toEqual('const pilot = "Han;"\n');
     expect(prepareProblem('//   start solution\nconst x = 2187;\n//   end solution\nconst pilot = "Han;"\n')).toEqual('const pilot = "Han;"\n');
     expect(prepareProblem('// START SOLUTION\nconst x = 2187;\n// END SOLUTION\nconst pilot = "Han;"\n')).toEqual('const pilot = "Han;"\n');
+    expect(prepareProblem('<!-- start solution -->\n<div class="solution"></div>\n<!-- end solution -->\n<div class="x-wing"></div>\n')).toEqual('<div class="x-wing"></div>\n');
   });
 
   it('should remove problem comments', function () {
@@ -22,6 +23,7 @@ describe('prepareProblem', function () {
     expect(prepareProblem('/*start problem\nconst jedi = "Rey;"\nend problem*/\n')).toEqual('const jedi = "Rey;"\n');
     expect(prepareProblem('/*    start problem\nconst jedi = "Rey;"\nend problem    */\n')).toEqual('const jedi = "Rey;"\n');
     expect(prepareProblem('/* START PROBLEM\nconst jedi = "Rey;"\nEND PROBLEM */\n')).toEqual('const jedi = "Rey;"\n');
+    expect(prepareProblem('<!-- start problem -->\n<div class="problem"></div>\n<!-- end problem -->\n')).toEqual('<div class="problem"></div>\n');
   });
 
   it('should not modify normal code', function () {
@@ -38,60 +40,73 @@ describe('prepareProblem', function () {
 
   it('should remove solution code while leaving non-solution code', function () {
     const mock = `
-    // start solution
-    function print(val) {
-      console.log(val);
-    }
-    // end solution
+      <body>
+        <!-- start solution -->
+        <div class="solution"></div>
+        <!-- end solution -->
 
-    // comment
-    const jedi = 'Obi-Wan';
+        <div class="x-wing"></div>
+      </body>
 
-    // start solution
-    print(jedi);
-    // end solution
+      // start solution
+      function print(val) {
+        console.log(val);
+      }
+      // end solution
 
-    console.log(jedi);`;
+      // comment
+      const jedi = 'Obi-Wan';
+
+      // start solution
+      print(jedi);
+      // end solution
+
+      console.log(jedi);`;
 
     const result = `
+      <body>
 
-    // comment
-    const jedi = 'Obi-Wan';
+        <div class="x-wing"></div>
+      </body>
 
 
-    console.log(jedi);`;
+      // comment
+      const jedi = 'Obi-Wan';
+
+
+      console.log(jedi);`;
 
     expect(prepareProblem(mock)).toEqual(result);
   });
 
   it('should remove problem comments while leaving non-solution code', function () {
     const mock = `
-    /* start problem
-    function print(val) {
-      console.log(val);
-    }
-    end problem */
+      /* start problem
+      function print(val) {
+        console.log(val);
+      }
+      end problem */
 
-    // comment
-    const jedi = 'Obi-Wan';
+      // comment
+      const jedi = 'Obi-Wan';
 
-    /* start problem
-    print(jedi);
-    end problem */
+      /* start problem
+      print(jedi);
+      end problem */
 
-    console.log(jedi);`;
+      console.log(jedi);`;
 
     const result = `
-    function print(val) {
-      console.log(val);
-    }
+      function print(val) {
+        console.log(val);
+      }
 
-    // comment
-    const jedi = 'Obi-Wan';
+      // comment
+      const jedi = 'Obi-Wan';
 
-    print(jedi);
+      print(jedi);
 
-    console.log(jedi);`;
+      console.log(jedi);`;
 
     expect(prepareProblem(mock)).toEqual(result);
   });
