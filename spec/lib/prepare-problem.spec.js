@@ -81,6 +81,14 @@ describe('prepareProblem', function () {
 
   it('should remove problem comments while leaving non-solution code', function () {
     const mock = `
+      <body>
+        <!-- start problem -->
+        <div class="problem"></div>
+        <!-- end problem -->
+
+        <div class="x-wing"></div>
+      </body>
+
       /* start problem
       function print(val) {
         console.log(val);
@@ -97,6 +105,12 @@ describe('prepareProblem', function () {
       console.log(jedi);`;
 
     const result = `
+      <body>
+        <div class="problem"></div>
+
+        <div class="x-wing"></div>
+      </body>
+
       function print(val) {
         console.log(val);
       }
