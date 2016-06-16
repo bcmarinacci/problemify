@@ -30,7 +30,7 @@ The following project components are automatically excluded:
 
 ### Problem code
 
-Wrap problem code with `/* start problem` and `end problem */` comments.
+Wrap JavaScript problem code with `/* start problem` and `end problem */` comments.
 
 ```javascript
 /* start problem
@@ -41,9 +41,17 @@ const print = function (value) {
 end problem */
 ```
 
+Wrap HTML problem code with `<!-- start problem` and `end problem -->` comments.
+
+```html
+<!-- start problem
+<div class="problem"></div>
+end problem -->
+```
+
 ### Solution code
 
-Wrap solution code with `// start solution` and `// end solution` comments.
+Wrap JavaScript solution code with `// start solution` and `// end solution` comments.
 
 ```javascript
 // start solution
@@ -51,6 +59,14 @@ const print = function (value) {
   console.log(value);
 };
 // end solution
+```
+
+Wrap HTML solution code with `<!-- start solution -->` and `<!-- end solution -->` comments.
+
+```html
+<!-- start solution -->
+<div class="solution"></div>
+<!-- end solution -->
 ```
 
 ## Examples
@@ -81,6 +97,22 @@ print(pilot);
 // Han Solo
 ```
 
+```html
+<body>
+  <!-- start solution -->
+  <div class="solution"></div>
+  <!-- end solution -->
+
+  <div class="x-wing"></div>
+
+  <!-- start problem
+  <div class="problem"></div>
+  end problem -->
+
+  <div class="y-wing"></div>
+</body>
+```
+
 ### kessel-run-problem
 
 ```javascript
@@ -94,6 +126,17 @@ print(pilot);
 // Han Solo
 ```
 
+```html
+<body>
+
+  <div class="x-wing"></div>
+
+  <div class="problem"></div>
+
+  <div class="y-wing"></div>
+</body>
+```
+
 ### kessel-run-solution
 
 ```javascript
@@ -104,6 +147,17 @@ const print = function (value) {
 const pilot = 'Han Solo';
 print(pilot);
 // Han Solo
+```
+
+```html
+<body>
+  <div class="solution"></div>
+
+  <div class="x-wing"></div>
+
+
+  <div class="y-wing"></div>
+</body>
 ```
 
 ## License
