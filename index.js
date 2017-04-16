@@ -7,7 +7,7 @@ const listFilepaths = require('list-filepaths');
 const prepareProblem = require('./lib/prepare-problem');
 const prepareSolution = require('./lib/prepare-solution');
 
-const mkdirpAsync = (dirpath) => {
+const mkdirpAsync = dirpath => {
   return new Promise((resolve, reject) => {
     mkdirp(dirpath, (err, made) => {
       /* istanbul ignore if */
@@ -33,7 +33,7 @@ const readFileAsync = (filepath, encoding) => {
   });
 };
 
-const statAsync = (targetPath) => {
+const statAsync = targetPath => {
   return new Promise((resolve, reject) => {
     fs.stat(targetPath, (err, stats) => {
       /* istanbul ignore if */
@@ -60,7 +60,7 @@ const writeFileAsync = (filepath, data) => {
   });
 };
 
-const problemify = async (directory) => {
+const problemify = async directory => {
   const stats = await statAsync(directory);
   if (!stats.isDirectory()) {
     throw new TypeError(`not a valid directory, ${directory}`);
@@ -73,12 +73,16 @@ const problemify = async (directory) => {
   const gitIgnoreRegex = /\.git(\/|$)|node_modules(\/|$)|dist(\/|$)|bower_components(\/|$)|temp*(\/|$)|jspm_packages(\/|$)|\.DS_Store/g;
   const filepaths = await listFilepaths(directory, { reject: gitIgnoreRegex });
   const problemPromiseMap = filepaths.map(filepath => {
-    const problemDirpath = path.dirname(filepath).replace(basepath, problemBasepath);
+    const problemDirpath = path
+      .dirname(filepath)
+      .replace(basepath, problemBasepath);
     const problemFilepath = filepath.replace(basepath, problemBasepath);
     return mkdirpAsync(problemDirpath)
       .then(() => readFileAsync(filepath, 'utf8'))
       .then(fileData => {
-        if (path.extname(filepath) === '.js' || path.extname(filepath) === '.html') {
+        if (
+          path.extname(filepath) === '.js' || path.extname(filepath) === '.html'
+        ) {
           return writeFileAsync(problemFilepath, prepareProblem(fileData));
         }
 
@@ -87,12 +91,16 @@ const problemify = async (directory) => {
   });
 
   const solutionPromiseMap = filepaths.map(filepath => {
-    const solutionDirpath = path.dirname(filepath).replace(basepath, solutionBasepath);
+    const solutionDirpath = path
+      .dirname(filepath)
+      .replace(basepath, solutionBasepath);
     const solutionFilepath = filepath.replace(basepath, solutionBasepath);
     return mkdirpAsync(solutionDirpath)
       .then(() => readFileAsync(filepath, 'utf8'))
       .then(fileData => {
-        if (path.extname(filepath) === '.js' || path.extname(filepath) === '.html') {
+        if (
+          path.extname(filepath) === '.js' || path.extname(filepath) === '.html'
+        ) {
           return writeFileAsync(solutionFilepath, prepareSolution(fileData));
         }
 

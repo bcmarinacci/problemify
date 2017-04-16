@@ -18,7 +18,11 @@ problemify(argv[0])
     fileList.forEach(filepath => console.log(filepath));
   })
   .catch(err => {
-    console.log(chalk.yellow("Something went wrong. See 'problemify --help' for usage information."));
+    console.log(
+      chalk.yellow(
+        "Something went wrong. See 'problemify --help' for usage information."
+      )
+    );
     console.error(chalk.red(err.stack || err));
     process.exit(1);
   });

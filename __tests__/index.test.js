@@ -120,32 +120,104 @@ print(jedi);
 // Qui-Gon
 `;
 
-describe('problemify', function () {
+describe('problemify', function() {
   let fileList;
 
-  beforeEach(function () {
+  beforeEach(function() {
     fileList = [
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-problem', 'higher-order/for-each/for-each.js')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-problem', 'higher-order/map/map.js')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-problem', 'index.html')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-problem', 'print/print.js')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-problem', 'text.txt')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-solution', 'higher-order/for-each/for-each.js')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-solution', 'higher-order/map/map.js')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-solution', 'index.html')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-solution', 'print/print.js')),
-      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils-solution', 'text.txt'))
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-problem',
+          'higher-order/for-each/for-each.js'
+        )
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-problem',
+          'higher-order/map/map.js'
+        )
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-problem',
+          'index.html'
+        )
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-problem',
+          'print/print.js'
+        )
+      ),
+      path.resolve(
+        path.join(__dirname, '..', '__fixtures__', 'utils-problem', 'text.txt')
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-solution',
+          'higher-order/for-each/for-each.js'
+        )
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-solution',
+          'higher-order/map/map.js'
+        )
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-solution',
+          'index.html'
+        )
+      ),
+      path.resolve(
+        path.join(
+          __dirname,
+          '..',
+          '__fixtures__',
+          'utils-solution',
+          'print/print.js'
+        )
+      ),
+      path.resolve(
+        path.join(__dirname, '..', '__fixtures__', 'utils-solution', 'text.txt')
+      )
     ];
   });
 
   it('should return a list of written files', async () => {
-    const files = await problemify(path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils')));
+    const files = await problemify(
+      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils'))
+    );
 
     expect(files).toEqual(fileList);
   });
 
   it('should write the correct content', async () => {
-    const files = await problemify(path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils')));
+    const files = await problemify(
+      path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils'))
+    );
 
     expect(fs.readFileSync(files[0], 'utf8')).toEqual(contents.problemForEach);
     expect(fs.readFileSync(files[1], 'utf8')).toEqual(contents.problemMap);
@@ -158,7 +230,18 @@ describe('problemify', function () {
 
   it('should throw an error if an invalid directory path is passed in', async () => {
     try {
-      await problemify(path.resolve(path.join(__dirname, '..', '__fixtures__', 'utils', 'print', 'print.js')));
+      await problemify(
+        path.resolve(
+          path.join(
+            __dirname,
+            '..',
+            '__fixtures__',
+            'utils',
+            'print',
+            'print.js'
+          )
+        )
+      );
     } catch (err) {
       expect(err.message).toMatch(/not a valid directory/);
     }
