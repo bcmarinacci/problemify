@@ -8,6 +8,7 @@ const problemify = require('../index');
 args.parse(process.argv, { value: '<directory>' });
 
 const argv = args.sub;
+
 if (argv.length === 0) {
   args.showHelp();
 }
