@@ -1,6 +1,6 @@
 machine:
   node:
-    version: node
+    version: 7.8.0
 
 general:
   artifacts:
