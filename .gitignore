@@ -1,6 +1,6 @@
 # App
-spec/fixtures/utils-problem
-spec/fixtures/utils-solution
+__fixtures__/utils-problem
+__fixtures__/utils-solution
 
 # Logs
 logs

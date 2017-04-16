@@ -1,8 +1,10 @@
 # problemify
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][circleci-image]][circleci-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
+[![npm](https://img.shields.io/npm/v/problemify.svg?style=flat-square)]()
+[![node](https://img.shields.io/node/v/problemify.svg?style=flat-square)]()
+[![CircleCI](https://img.shields.io/circleci/project/github/bcmarinacci/problemify.svg?style=flat-square)]()
+[![Coveralls](https://img.shields.io/coveralls/bcmarinacci/problemify.svg?style=flat-square)]()
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 > Create problem and solution versions of a directory
 
@@ -159,14 +161,3 @@ print(pilot);
   <div class="y-wing"></div>
 </body>
 ```
-
-## License
-
-MIT
-
-[npm-image]: https://img.shields.io/npm/v/problemify.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/problemify
-[circleci-image]: https://img.shields.io/circleci/project/bcmarinacci/problemify/master.svg?style=flat-square
-[circleci-url]: https://circleci.com/gh/bcmarinacci/problemify/tree/master
-[coveralls-image]: https://img.shields.io/coveralls/bcmarinacci/problemify/master.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/github/bcmarinacci/problemify?branch=master

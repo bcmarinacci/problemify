@@ -1,10 +1,9 @@
-/* eslint-disable prefer-arrow-callback */
 'use strict';
 
 const prepareSolution = require('../../lib/prepare-solution');
 
-describe('prepareSolution', function () {
-  it('should remove problem code', function () {
+describe('prepareSolution', () => {
+  it('should remove problem code', () => {
     expect(prepareSolution('/* start problem\nconst jedi = "Rey;"\nend problem */\nconst droid = "R2-D2";')).toEqual('const droid = "R2-D2";');
     expect(prepareSolution('/* first start problem\nconst jedi = "Rey;"\nthen end problem */\nconst droid = "R2-D2";')).toEqual('const droid = "R2-D2";');
     expect(prepareSolution('/* start problem code\nconst jedi = "Rey;"\nend problem code */\nconst droid = "R2-D2";')).toEqual('const droid = "R2-D2";');
@@ -15,7 +14,7 @@ describe('prepareSolution', function () {
     expect(prepareSolution('<!-- start problem -->\n<div class="problem"></div>\n<!-- end problem -->\n<div class="x-wing"></div>\n')).toEqual('<div class="x-wing"></div>\n');
   });
 
-  it('should remove solution comments', function () {
+  it('should remove solution comments', () => {
     expect(prepareSolution('// start solution\nconst x = 2187;\n// end solution\nconst pilot = "Han";\n')).toEqual('const x = 2187;\nconst pilot = "Han";\n');
     expect(prepareSolution('// first start solution\nconst x = 2187;\n// then end solution\nconst pilot = "Han";\n')).toEqual('const x = 2187;\nconst pilot = "Han";\n');
     expect(prepareSolution('// start solution code\nconst x = 2187;\n// end solution code\nconst pilot = "Han";\n')).toEqual('const x = 2187;\nconst pilot = "Han";\n');
@@ -26,19 +25,19 @@ describe('prepareSolution', function () {
     expect(prepareSolution('<!-- start solution -->\n<div class="solution"></div>\n<!-- end solution -->\n')).toEqual('<div class="solution"></div>\n');
   });
 
-  it('should not modify normal code', function () {
+  it('should not modify normal code', () => {
     const mock = '// normal code';
 
     expect(prepareSolution(mock)).toEqual(mock);
   });
 
-  it('should retain indentation', function () {
+  it('should retain indentation', () => {
     const mock = '   const copilot = "Chewbacca";\n    console.log(copilot);\n';
 
     expect(prepareSolution(mock)).toEqual(mock);
   });
 
-  it('should remove problem code whie leaving non-problem code', function () {
+  it('should remove problem code whie leaving non-problem code', () => {
     const mock = `
       <body>
         <!-- start problem -->
@@ -79,7 +78,7 @@ describe('prepareSolution', function () {
     expect(prepareSolution(mock)).toEqual(result);
   });
 
-  it('should remove solution comments while leaving non-problem code', function () {
+  it('should remove solution comments while leaving non-problem code', () => {
     const mock = `
       <body>
         <!-- start solution -->
