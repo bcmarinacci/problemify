@@ -20,7 +20,13 @@ $ npm install -g problemify
 $ problemify <directory>
 ```
 
-The following project components are automatically excluded:
+__Supported file extensions:__
+
+- .js
+- .html
+
+__Excluded files/directories:__
+
 - .DS_Store
 - .git
 - bower_components
