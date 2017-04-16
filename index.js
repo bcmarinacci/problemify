@@ -1,60 +1,60 @@
 'use strict';
 
-const { dirname, extname, resolve } = require('path');
-const { readFile, stat, writeFile } = require('fs');
+const path = require('path');
+const fs = require('fs');
 const mkdirp = require('mkdirp');
 const listFilepaths = require('list-filepaths');
 const prepareProblem = require('./lib/prepare-problem');
 const prepareSolution = require('./lib/prepare-solution');
 
 const mkdirpAsync = (dirpath) => {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, reject) => {
     mkdirp(dirpath, (err, made) => {
       /* istanbul ignore if */
       if (err) {
-        rej(err);
+        reject(err);
       } else {
-        res(made);
+        resolve(made);
       }
     });
   });
 };
 
 const readFileAsync = (filepath, encoding) => {
-  return new Promise((res, rej) => {
-    readFile(filepath, encoding, (err, data) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filepath, encoding, (err, data) => {
       /* istanbul ignore if */
       if (err) {
-        rej(err);
+        reject(err);
       } else {
-        res(data);
+        resolve(data);
       }
     });
   });
 };
 
 const statAsync = (targetPath) => {
-  return new Promise((res, rej) => {
-    stat(targetPath, (err, stats) => {
+  return new Promise((resolve, reject) => {
+    fs.stat(targetPath, (err, stats) => {
       /* istanbul ignore if */
       if (err) {
-        rej(err);
+        reject(err);
       } else {
-        res(stats);
+        resolve(stats);
       }
     });
   });
 };
 
 const writeFileAsync = (filepath, data) => {
-  return new Promise((res, rej) => {
-    writeFile(filepath, data, err => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(filepath, data, err => {
       /* istanbul ignore if */
       if (err) {
-        rej(err);
+        reject(err);
       } else {
         // Resolve with the original file path instead of the default value, `undefined`
-        res(filepath);
+        resolve(filepath);
       }
     });
   });
@@ -66,19 +66,19 @@ const problemify = async (directory) => {
     throw new TypeError(`not a valid directory, ${directory}`);
   }
 
-  const basepath = resolve(directory);
+  const basepath = path.resolve(directory);
   const problemBasepath = `${basepath}-problem`;
   const solutionBasepath = `${basepath}-solution`;
   // Reject: .git, node_modules, dist, bower_components, tem, temp, jspm_packages, .DS_Store
   const gitIgnoreRegex = /\.git(\/|$)|node_modules(\/|$)|dist(\/|$)|bower_components(\/|$)|temp*(\/|$)|jspm_packages(\/|$)|\.DS_Store/g;
   const filepaths = await listFilepaths(directory, { reject: gitIgnoreRegex });
   const problemPromiseMap = filepaths.map(filepath => {
-    const problemDirpath = dirname(filepath).replace(basepath, problemBasepath);
+    const problemDirpath = path.dirname(filepath).replace(basepath, problemBasepath);
     const problemFilepath = filepath.replace(basepath, problemBasepath);
     return mkdirpAsync(problemDirpath)
       .then(() => readFileAsync(filepath, 'utf8'))
       .then(fileData => {
-        if (extname(filepath) === '.js' || extname(filepath) === '.html') {
+        if (path.extname(filepath) === '.js' || path.extname(filepath) === '.html') {
           return writeFileAsync(problemFilepath, prepareProblem(fileData));
         }
 
@@ -87,12 +87,12 @@ const problemify = async (directory) => {
   });
 
   const solutionPromiseMap = filepaths.map(filepath => {
-    const solutionDirpath = dirname(filepath).replace(basepath, solutionBasepath);
+    const solutionDirpath = path.dirname(filepath).replace(basepath, solutionBasepath);
     const solutionFilepath = filepath.replace(basepath, solutionBasepath);
     return mkdirpAsync(solutionDirpath)
       .then(() => readFileAsync(filepath, 'utf8'))
       .then(fileData => {
-        if (extname(filepath) === '.js' || extname(filepath) === '.html') {
+        if (path.extname(filepath) === '.js' || path.extname(filepath) === '.html') {
           return writeFileAsync(solutionFilepath, prepareSolution(fileData));
         }
 
