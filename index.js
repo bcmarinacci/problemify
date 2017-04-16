@@ -60,7 +60,7 @@ const writeFileAsync = (filepath, data) => {
   });
 };
 
-module.exports = async (directory) => {
+const problemify = async (directory) => {
   const stats = await statAsync(directory);
   if (!stats.isDirectory()) {
     throw new TypeError(`not a valid directory, ${directory}`);
@@ -102,3 +102,5 @@ module.exports = async (directory) => {
 
   return Promise.all([...problemPromiseMap, ...solutionPromiseMap]);
 };
+
+module.exports = problemify;
