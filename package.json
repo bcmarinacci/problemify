@@ -45,7 +45,6 @@
   "dependencies": {
     "args": "^1.2.1",
     "chalk": "^1.1.3",
-    "co": "^4.6.0",
     "list-filepaths": "^1.5.7",
     "mkdirp": "^0.5.1",
     "trim-whitespace": "^1.3.1"

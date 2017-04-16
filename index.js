@@ -2,7 +2,6 @@
 
 const { dirname, extname, resolve } = require('path');
 const { readFile, stat, writeFile } = require('fs');
-const co = require('co');
 const mkdirp = require('mkdirp');
 const listFilepaths = require('list-filepaths');
 const prepareProblem = require('./lib/prepare-problem');
@@ -61,8 +60,8 @@ const writeFileAsync = function (filepath, data) {
   });
 };
 
-module.exports = co.wrap(function* (directory) {
-  const stats = yield statAsync(directory);
+module.exports = async (directory) => {
+  const stats = await statAsync(directory);
   if (!stats.isDirectory()) {
     throw new TypeError(`not a valid directory, ${directory}`);
   }
@@ -72,7 +71,7 @@ module.exports = co.wrap(function* (directory) {
   const solutionBasepath = `${basepath}-solution`;
   // Reject: .git, node_modules, dist, bower_components, tem, temp, jspm_packages, .DS_Store
   const gitIgnoreRegex = /\.git(\/|$)|node_modules(\/|$)|dist(\/|$)|bower_components(\/|$)|temp*(\/|$)|jspm_packages(\/|$)|\.DS_Store/g;
-  const filepaths = yield listFilepaths(directory, { reject: gitIgnoreRegex });
+  const filepaths = await listFilepaths(directory, { reject: gitIgnoreRegex });
   const problemPromiseMap = filepaths.map(filepath => {
     const problemDirpath = dirname(filepath).replace(basepath, problemBasepath);
     const problemFilepath = filepath.replace(basepath, problemBasepath);
@@ -102,4 +101,4 @@ module.exports = co.wrap(function* (directory) {
   });
 
   return Promise.all([...problemPromiseMap, ...solutionPromiseMap]);
-});
+};
