@@ -5,8 +5,8 @@ const { readFile, stat, writeFile } = require('fs');
 const co = require('co');
 const mkdirp = require('mkdirp');
 const listFilepaths = require('list-filepaths');
-const prepareProblem = require('./prepare-problem');
-const prepareSolution = require('./prepare-solution');
+const prepareProblem = require('./lib/prepare-problem');
+const prepareSolution = require('./lib/prepare-solution');
 
 const mkdirpAsync = function (dirpath) {
   return new Promise((res, rej) => {

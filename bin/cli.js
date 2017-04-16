@@ -3,7 +3,7 @@
 
 const args = require('args');
 const chalk = require('chalk');
-const problemify = require('../lib/problemify');
+const problemify = require('../index');
 
 args.parse(process.argv, { value: '<directory>' });
 
