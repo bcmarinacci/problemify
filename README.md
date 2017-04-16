@@ -1,9 +1,9 @@
 # problemify
 
-[![npm](https://img.shields.io/npm/v/problemify.svg?style=flat-square)]()
-[![node](https://img.shields.io/node/v/problemify.svg?style=flat-square)]()
-[![CircleCI](https://img.shields.io/circleci/project/github/bcmarinacci/problemify.svg?style=flat-square)]()
-[![Coveralls](https://img.shields.io/coveralls/bcmarinacci/problemify.svg?style=flat-square)]()
+[![npm](https://img.shields.io/npm/v/problemify.svg?style=flat-square)](https://www.npmjs.com/package/problemify)
+[![node](https://img.shields.io/node/v/problemify.svg?style=flat-square)](https://github.com/nodejs/node)
+[![CircleCI](https://img.shields.io/circleci/project/github/bcmarinacci/problemify.svg?style=flat-square)](https://circleci.com/gh/bcmarinacci/problemify)
+[![Coveralls](https://img.shields.io/coveralls/bcmarinacci/problemify.svg?style=flat-square)](https://coveralls.io/github/bcmarinacci/problemify)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 > Create problem and solution versions of a directory
