@@ -40,7 +40,8 @@
   },
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "index.js"
   ],
   "dependencies": {
     "args": "^1.2.1",
