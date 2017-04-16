@@ -7,7 +7,7 @@ const listFilepaths = require('list-filepaths');
 const prepareProblem = require('./lib/prepare-problem');
 const prepareSolution = require('./lib/prepare-solution');
 
-const mkdirpAsync = function (dirpath) {
+const mkdirpAsync = (dirpath) => {
   return new Promise((res, rej) => {
     mkdirp(dirpath, (err, made) => {
       /* istanbul ignore if */
@@ -20,7 +20,7 @@ const mkdirpAsync = function (dirpath) {
   });
 };
 
-const readFileAsync = function (filepath, encoding) {
+const readFileAsync = (filepath, encoding) => {
   return new Promise((res, rej) => {
     readFile(filepath, encoding, (err, data) => {
       /* istanbul ignore if */
@@ -33,7 +33,7 @@ const readFileAsync = function (filepath, encoding) {
   });
 };
 
-const statAsync = function (targetPath) {
+const statAsync = (targetPath) => {
   return new Promise((res, rej) => {
     stat(targetPath, (err, stats) => {
       /* istanbul ignore if */
@@ -46,7 +46,7 @@ const statAsync = function (targetPath) {
   });
 };
 
-const writeFileAsync = function (filepath, data) {
+const writeFileAsync = (filepath, data) => {
   return new Promise((res, rej) => {
     writeFile(filepath, data, err => {
       /* istanbul ignore if */
