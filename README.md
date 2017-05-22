@@ -36,7 +36,7 @@ __Excluded files/directories:__
 - tem
 - temp
 
-### Problem code
+### Problem-only code
 
 Wrap JavaScript problem code with `/* start problem` and `end problem */` comments.
 
@@ -57,7 +57,7 @@ Wrap HTML problem code with `<!-- start problem` and `end problem -->` comments.
 end problem -->
 ```
 
-### Solution code
+### Solution-only code
 
 Wrap JavaScript solution code with `// start solution` and `// end solution` comments.
 
@@ -76,6 +76,10 @@ Wrap HTML solution code with `<!-- start solution -->` and `<!-- end solution --
 <div class="solution"></div>
 <!-- end solution -->
 ```
+
+### Shared code
+
+Any code that is not surrounded by problem or solution comments will be included in both -- the problem and the solution -- repositories.
 
 ## Examples
 
